@@ -4,20 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlays = document.querySelectorAll('.overlay');
     const closeLinks = document.querySelectorAll('.close-overlay');
     
-    // Open overlay (only if link has data-overlay and href is "#")
+    // Open overlay
     showAllLinks.forEach(link => {
         link.addEventListener('click', function(e) {
+            e.preventDefault();
             const overlayId = this.getAttribute('data-overlay');
-            const href = this.getAttribute('href');
-            // Only prevent default and show overlay if it's a placeholder link
-            if (overlayId && href === '#') {
-                e.preventDefault();
-                const overlay = document.getElementById(`overlay-${overlayId}`);
-                if (overlay) {
-                    overlay.classList.add('active');
-                }
+            const overlay = document.getElementById(`overlay-${overlayId}`);
+            if (overlay) {
+                overlay.classList.add('active');
             }
-            // Otherwise, let the link navigate normally
         });
     });
     
