@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ijti.</title>
+  <title>ijtihed kilani.</title>
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   
   <!-- Primary Meta Tags -->
-  <meta name="title" content="ijti - Software Engineer & Mathematician" />
-  <meta name="description" content="ijtihed kilani is a software engineer & mathematician. Currently works as a founding engineer at kova labs and research assistant at aalto computational behavior lab." />
+  <meta name="title" content="ijtihed kilani (or ijti for short)" />
+  <meta name="description" content="i am a software engineer & mathematician. currently working as a founding engineer at kova labs and research assistant at aalto computational behavior lab." />
   <meta name="keywords" content="ijtihed kilani, software engineer, mathematician, kova labs, aalto university, computational engineering, pure math, VR research, simulations engineer, portfolio" />
   <meta name="author" content="ijtihed kilani" />
   <meta name="robots" content="index, follow" />
@@ -19,15 +19,15 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.ijtihed.com/" />
-  <meta property="og:title" content="ijti - Software Engineer & Mathematician" />
-  <meta property="og:description" content="ijtihed kilani is a software engineer & mathematician. Currently works as a founding engineer at kova labs and research assistant at aalto computational behavior lab." />
+  <meta property="og:title" content="ijtihed kilani (or ijti for short)" />
+  <meta property="og:description" content="i am a software engineer & mathematician. currently working as a founding engineer at kova labs and research assistant at aalto computational behavior lab." />
   <meta property="og:image" content="https://www.ijtihed.com/favicon.ico" />
   
   <!-- Twitter -->
   <meta property="twitter:card" content="summary" />
   <meta property="twitter:url" content="https://www.ijtihed.com/" />
-  <meta property="twitter:title" content="ijti - Software Engineer & Mathematician" />
-  <meta property="twitter:description" content="ijtihed kilani is a software engineer & mathematician. Currently works as a founding engineer at kova labs and research assistant at aalto computational behavior lab." />
+  <meta property="twitter:title" content="ijtihed kilani (or ijti for short)" />
+  <meta property="twitter:description" content="i am a software engineer & mathematician. currently working as a founding engineer at kova labs and research assistant at aalto computational behavior lab." />
   <meta property="twitter:image" content="https://www.ijtihed.com/favicon.ico" />
   
   <!-- Styles and Fonts -->
@@ -37,13 +37,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="greeting">hey, i'm ijtihed.</div>
+  <div class="greeting-container">
+    <div class="greeting">
+      hey, i'm <span class="clickable highlight" data-step="1">ijtihed</span>.
+      <span class="revealed-text" id="step-1" style="display: none;"> yes that's my <span class="clickable highlight" data-step="2">name</span>.</span>
+      <span class="revealed-text" id="step-2" style="display: none;"> yes i know it's <span class="clickable highlight" data-step="3">uncommon</span>.</span>
+      <span class="revealed-text" id="step-3" style="display: none;"> at least i can use it as a <span class="clickable highlight" data-step="4">game</span>tag.</span>
+      <span class="revealed-text" id="step-4" style="display: none;"> oh yeah, i make <span class="clickable highlight" data-step="5">games</span>.</span>
+      <span class="revealed-text" id="step-5" style="display: none;"> a few are available publicly but nowadays i mostly do <span class="clickable highlight" data-step="6">simulations</span>.</span>
+      <span class="revealed-text" id="step-6" style="display: none;"> did it at <span class="clickable highlight sensofusion-highlight" data-step="sensofusion" data-branch="sensofusion">sensofusion</span> and at a <span class="clickable highlight" data-step="research" data-branch="research">research</span> lab.
+      
+      <!-- Research branch (inline, right after "research lab") -->
+      <span class="branch-content" id="research-branch" style="display: none;"> i was a researcher at king abdualziz university working on <span class="clickable highlight" data-step="research-1">bioinformatics</span>.</span>
+      <span class="revealed-text" id="research-1" style="display: none;"> basically a lot of <span class="clickable highlight" data-step="research-2">data</span> needed to be understood lol.</span>
+      <span class="revealed-text" id="research-2" style="display: none;"> did a bsc a computational engineering major at aalto now i'm doing an msc in pure math.</span>
+      </span>
+      
+      <!-- Sensofusion branch (new line, separate) -->
+      <span class="branch-content sensofusion-branch" id="sensofusion-branch" style="display: none;">
+        <br>sensofusion was my first <span class="clickable highlight sensofusion-highlight" data-step="sensofusion-1">swe</span> job.
+        <span class="revealed-text" id="sensofusion-1" style="display: none;"> got it from <span class="clickable highlight sensofusion-highlight" data-step="sensofusion-2">nullfellows</span>.</span>
+        <span class="revealed-text" id="sensofusion-2" style="display: none;"> super cool program that connects <span class="clickable highlight builders-highlight" data-step="builders" data-branch="builders">builders</span> with real <span class="clickable highlight sensofusion-highlight" data-step="sensofusion-3">startup</span> opportunities across the eu.</span>
+        <span class="revealed-text" id="sensofusion-3" style="display: none;"> now i'm a founding engineer at <span class="clickable highlight sensofusion-highlight" data-step="sensofusion-4">kova labs</span>.</span>
+        <span class="revealed-text" id="sensofusion-4" style="display: none;"> kova labs is a drone startup backed by lifeline vc.</span>
+      </span>
+      
+      <!-- Builders branch (new line, separate) -->
+      <span class="branch-content builders-branch" id="builders-branch" style="display: none;">
+        <br>i am <span class="clickable highlight builders-highlight" data-step="builders-1">tunisian</span>, living in <span class="clickable highlight builders-highlight" data-step="builders-2">finland</span>.
+        <span class="revealed-text" id="builders-1" style="display: none;"> i did not grow up here, i came for studies at first, now work.</span>
+        <span class="revealed-text" id="builders-2" style="display: none;"> i am 18 years old, and i live in <span class="clickable highlight builders-highlight" data-step="builders-3">espoo</span>, right next to <span class="clickable highlight builders-highlight" data-step="builders-4">helsinki</span>.</span>
+        <span class="revealed-text" id="builders-3" style="display: none;"> it is calm here, and it lets me focus.</span>
+        <span class="revealed-text" id="builders-4" style="display: none;"> it is <span class="clickable highlight builders-highlight" id="builders-time" data-step="builders-5">my local time</span> right now, so if i answer late, i am either asleep or locked into work.</span>
+        <span class="revealed-text" id="builders-5" style="display: none;"> i write code when i am stressed, and i write more when things go wrong. i care about <span class="clickable highlight builders-highlight" data-step="builders-6">proof</span>, not vibes.</span>
+        <span class="revealed-text" id="builders-6" style="display: none;"> i like clear outputs, clean systems, and work you can show. i also do <span class="clickable highlight builders-highlight" data-step="builders-7">vr</span> sometimes, because i like interaction, and because it forces you to be precise.</span>
+        <span class="revealed-text" id="builders-7" style="display: none;"> that's it. if you want to reach me, email me at <a href="mailto:ijtihedk@gmail.com" class="builders-highlight">ijtihedk@gmail.com</a>.</span>
+      </span>
+    </div>
+    <div class="click-hint">(if you click on it)</div>
+  </div>
   
   <div class="abstract-line"></div>
   
   <div class="content">
     <div class="section summary">
       <p>i do software engineering & mathematics. currently working as a founding engineer at <a href="https://www.kovahq.com" target="_blank" rel="noreferrer">kova labs</a> and research assistant at <a href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">aalto computational behavior lab</a>.</p>
+      <p>making shit happen at <a href="https://nullfellows.com" target="_blank" rel="noreferrer">nullfellows.com</a>.</p>
     </div>
     
     <div class="section">

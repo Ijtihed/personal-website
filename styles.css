@@ -17,18 +17,104 @@ body {
 }
 
 /* Greeting - centered at top */
-.greeting {
+.greeting-container {
     position: fixed;
     top: 48px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
+    text-align: center;
+    cursor: pointer;
+    max-width: 600px;
+    width: calc(100% - 96px);
+    padding: 0 24px;
+}
+
+.greeting {
     font-size: 16px;
     font-weight: 400;
     color: #F5F5F5;
-    z-index: 1;
-    pointer-events: none;
     letter-spacing: -0.2px;
+    pointer-events: auto;
+    display: inline-block;
+    text-align: left;
+    max-width: 100%;
 }
+
+.greeting .highlight {
+    color: #DAA520;
+    cursor: pointer;
+}
+
+/* Sensofusion branch - Pink/Vivid Pink */
+.greeting .sensofusion-highlight,
+.sensofusion-highlight {
+    color: #FF0099 !important;
+    cursor: pointer;
+}
+
+.sensofusion-branch .sensofusion-highlight {
+    color: #FF0099;
+    cursor: pointer;
+}
+
+/* Builders branch - Neon Green */
+.greeting .builders-highlight,
+.builders-highlight {
+    color: #00FF85 !important;
+    cursor: pointer;
+}
+
+.builders-branch .builders-highlight {
+    color: #00FF85;
+    cursor: pointer;
+}
+
+.builders-branch a.builders-highlight {
+    color: #00FF85;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 0.5px;
+}
+
+.greeting .clickable {
+    transition: color 0.2s ease;
+}
+
+.greeting .clickable.clicked {
+    color: #F5F5F5 !important;
+}
+
+/* Override branch colors when clicked */
+.greeting .clickable.clicked.sensofusion-highlight,
+.greeting .clickable.clicked.builders-highlight {
+    color: #F5F5F5 !important;
+}
+
+.greeting .revealed-text {
+    display: inline;
+}
+
+.greeting .branch-content {
+    display: none;
+}
+
+.greeting a {
+    color: #DAA520;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 0.5px;
+}
+
+.click-hint {
+    font-size: 12px;
+    color: #F5F5F5;
+    opacity: 0.4;
+    margin-top: 4px;
+    letter-spacing: -0.1px;
+    pointer-events: none;
+}
+
 
 /* Abstract line - subtle diagonal */
 .abstract-line {
@@ -271,15 +357,24 @@ a:hover {
         font-size: 14px;
     }
     
-    .greeting {
+    .greeting-container {
         position: static;
         transform: none;
         text-align: center;
         padding: 24px 18px 0;
         margin-bottom: 2em;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .greeting {
         color: #F5F5F5;
         font-size: 15px;
+        text-align: center;
+        display: block;
+        width: 100%;
     }
+    
     
     .abstract-line {
         display: none;
@@ -287,8 +382,8 @@ a:hover {
     
     .content {
         padding: 120px 18px 24px;
-        padding-left: 40px;
         max-width: 100%;
+        box-sizing: border-box;
     }
     
     .section::before {
