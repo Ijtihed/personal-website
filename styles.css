@@ -16,23 +16,18 @@ body {
     font-weight: 400;
 }
 
-/* Greeting - isolated, closer to content */
+/* Greeting - centered at top */
 .greeting {
     position: fixed;
     top: 48px;
-    right: 48px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 16px;
     font-weight: 400;
     color: #F5F5F5;
-    transform: rotate(-1deg);
     z-index: 1;
     pointer-events: none;
-    transition: transform 0.3s ease;
     letter-spacing: -0.2px;
-}
-
-.greeting:hover {
-    transform: rotate(0deg);
 }
 
 /* Abstract line - subtle diagonal */
@@ -53,10 +48,12 @@ body {
     pointer-events: none;
 }
 
-/* Content - top left */
+/* Content - top left with weird start */
 .content {
     position: relative;
     padding: 48px;
+    padding-top: 120px;
+    padding-left: 80px;
     max-width: 560px;
     z-index: 10;
 }
@@ -277,6 +274,7 @@ a:hover {
     .greeting {
         position: static;
         transform: none;
+        text-align: center;
         padding: 24px 18px 0;
         margin-bottom: 2em;
         color: #F5F5F5;
@@ -288,7 +286,8 @@ a:hover {
     }
     
     .content {
-        padding: 24px 18px;
+        padding: 120px 18px 24px;
+        padding-left: 40px;
         max-width: 100%;
     }
     
