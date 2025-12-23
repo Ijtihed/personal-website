@@ -12,23 +12,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentTimeElement = document.getElementById('current-time');
         const buildersTimeElement = document.getElementById('builders-time');
         
+        const now = new Date();
+        
+        // Use browser's locale for local time formatting
+        const timeString = now.toLocaleTimeString(undefined, { 
+            hour: 'numeric', 
+            minute: '2-digit',
+            hour12: true 
+        });
+        
         if (currentTimeElement && currentTimeElement.offsetParent !== null) {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', { 
-                hour: 'numeric', 
-                minute: '2-digit',
-                hour12: true 
-            });
             currentTimeElement.textContent = timeString;
         }
         
         if (buildersTimeElement && buildersTimeElement.offsetParent !== null) {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', { 
-                hour: 'numeric', 
-                minute: '2-digit',
-                hour12: true 
-            });
             buildersTimeElement.textContent = timeString;
         }
     }
@@ -84,7 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     const timeEl = targetStep.querySelector('#current-time') || targetStep.querySelector('#builders-time');
                     if (timeEl) {
                         const now = new Date();
-                        const timeString = now.toLocaleTimeString('en-US', { 
+                        // Use browser's locale for local time formatting
+                        const timeString = now.toLocaleTimeString(undefined, { 
                             hour: 'numeric', 
                             minute: '2-digit',
                             hour12: true 
