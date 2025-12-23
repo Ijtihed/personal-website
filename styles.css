@@ -16,6 +16,18 @@ body {
     font-weight: 400;
 }
 
+/* Loading animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Greeting - normal flow above content */
 .greeting {
     font-size: 16px;
@@ -23,10 +35,21 @@ body {
     color: #F5F5F5;
     letter-spacing: -0.2px;
     margin-bottom: 2em;
+    transition: transform 0.3s ease;
+    animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.greeting:hover {
+    transform: translateX(4px);
 }
 
 .greeting .name {
     color: #FFB302;
+    transition: color 0.3s ease;
+}
+
+.greeting:hover .name {
+    color: #FFC533;
 }
 
 /* Abstract line - subtle diagonal */
@@ -55,11 +78,38 @@ body {
     padding-left: 80px;
     max-width: 560px;
     z-index: 10;
+    animation: fadeInUp 0.6s ease-out;
 }
 
 .section {
     margin-bottom: 2.8em;
     position: relative;
+    transition: transform 0.3s ease;
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.section:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.section:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.section:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.section:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.section:hover {
+    transform: translateX(4px);
 }
 
 .section.summary {
@@ -90,12 +140,13 @@ h2 {
 .show-all {
     opacity: 0.4;
     font-size: 13px;
-    transition: opacity 0.2s ease;
+    transition: all 0.3s ease;
     letter-spacing: -0.1px;
 }
 
 .show-all:hover {
     opacity: 0.7;
+    transform: translateX(2px);
 }
 
 .links {
@@ -110,8 +161,9 @@ a {
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 0.5px;
-    transition: opacity 0.2s ease;
+    transition: all 0.3s ease;
     letter-spacing: -0.1px;
+    position: relative;
 }
 
 a:visited {
@@ -120,14 +172,23 @@ a:visited {
 
 a:hover {
     opacity: 0.8;
+    text-underline-offset: 5px;
+    transform: translateX(2px);
 }
 
 .cv-link {
     color: #FFB302;
+    transition: all 0.3s ease;
 }
 
 .cv-link:visited {
     color: #FFB302;
+}
+
+.cv-link:hover {
+    color: #FFC533;
+    text-underline-offset: 5px;
+    transform: translateX(2px);
 }
 
 /* Subtle hover effect on sections */
@@ -218,6 +279,16 @@ a:hover {
 
 .overlay.active {
     display: flex;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .overlay-content {
@@ -256,12 +327,13 @@ a:hover {
     color: #F5F5F5;
     opacity: 0.4;
     font-size: 13px;
-    transition: opacity 0.2s ease;
+    transition: all 0.3s ease;
     letter-spacing: -0.1px;
 }
 
 .close-overlay:hover {
     opacity: 0.7;
+    transform: translateX(2px);
 }
 
 /* Subtle cursor interaction */
