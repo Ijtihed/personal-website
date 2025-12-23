@@ -20,7 +20,7 @@ body {
 .greeting-container {
     position: fixed;
     top: 48px;
-    left: 50%;
+    left: 60%;
     transform: translateX(-50%);
     z-index: 1;
     text-align: center;
