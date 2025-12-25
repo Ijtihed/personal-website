@@ -51,30 +51,6 @@ function updateExperienceDurations(overlay) {
     });
 }
 
-// Theme Toggle Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    const body = document.body;
-    
-    // Update button text based on current theme
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    if (themeToggle) {
-        themeToggle.textContent = currentTheme === 'light' ? 'light' : 'dark';
-    }
-    
-    // Toggle theme on button click
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            html.classList.toggle('light-mode');
-            body.classList.toggle('light-mode');
-            const isLightMode = body.classList.contains('light-mode');
-            themeToggle.textContent = isLightMode ? 'light' : 'dark';
-            localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
-        });
-    }
-});
-
 // Overlay functionality
 document.addEventListener('DOMContentLoaded', function() {
     const showAllLinks = document.querySelectorAll('.show-all');

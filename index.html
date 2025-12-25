@@ -35,21 +35,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <script>
-    // Apply theme immediately to prevent flash
-    (function() {
-      try {
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        if (currentTheme === 'light') {
-          document.documentElement.classList.add('light-mode');
-        }
-      } catch(e) {}
-    })();
-  </script>
 </head>
 <body>
-  <button class="theme-toggle" id="theme-toggle">dark</button>
-  
   <div class="abstract-line"></div>
   
   <div class="content">

@@ -7,7 +7,7 @@
 
 body {
     background-color: #0A0A0A;
-    color: #F5F0E8;
+    color: #F5F5F5;
     font-family: monospace;
     font-size: 15px;
     line-height: 1.6;
@@ -33,7 +33,7 @@ body {
 .greeting {
     font-size: 16px;
     font-weight: 400;
-    color: #F5F0E8;
+    color: #F5F5F5;
     letter-spacing: -0.2px;
     margin-top: 8px;
     margin-bottom: 2em;
@@ -51,16 +51,8 @@ body {
     transition: color 0.3s ease;
 }
 
-body.light-mode .greeting .name {
-    color: #007FFF;
-}
-
 .greeting:hover .name {
     color: #FFC533;
-}
-
-body.light-mode .greeting:hover .name {
-    color: #0066CC;
 }
 
 /* Abstract line - subtle diagonal */
@@ -72,8 +64,8 @@ body.light-mode .greeting:hover .name {
     height: 200vh;
     background: linear-gradient(to bottom, 
         transparent 0%, 
-        rgba(245, 240, 232, 0.08) 20%, 
-        rgba(245, 240, 232, 0.08) 80%, 
+        rgba(245, 245, 245, 0.08) 20%, 
+        rgba(245, 245, 245, 0.08) 80%, 
         transparent 100%);
     transform: rotate(8deg);
     transform-origin: top left;
@@ -168,7 +160,7 @@ h2 {
 }
 
 a {
-    color: #F5F0E8;
+    color: #F5F5F5;
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 0.5px;
@@ -178,7 +170,7 @@ a {
 }
 
 a:visited {
-    color: #F5F0E8;
+    color: #F5F5F5;
 }
 
 a:hover {
@@ -192,115 +184,14 @@ a:hover {
     transition: all 0.3s ease;
 }
 
-body.light-mode .cv-link {
-    color: #007FFF;
-}
-
 .cv-link:visited {
     color: #FFB302;
 }
 
-body.light-mode .cv-link:visited {
-    color: #007FFF;
-}
-
 .cv-link:hover {
     color: #FFC533;
-}
-
-body.light-mode .cv-link:hover {
-    color: #0066CC;
-}
-
-.cv-link:hover {
-    opacity: 0.8;
     text-underline-offset: 5px;
     transform: translateX(2px);
-}
-
-/* Dark/Light Mode Toggle Button */
-.theme-toggle {
-    position: fixed;
-    top: 24px;
-    right: 24px;
-    background: transparent;
-    border: 1px solid rgba(245, 240, 232, 0.3);
-    color: #F5F0E8;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-family: monospace;
-    font-size: 12px;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.theme-toggle:hover {
-    background: rgba(245, 240, 232, 0.1);
-    border-color: rgba(245, 240, 232, 0.5);
-}
-
-body.light-mode .theme-toggle {
-    color: #0A0A0A;
-    border-color: rgba(10, 10, 10, 0.3);
-}
-
-body.light-mode .theme-toggle:hover {
-    background: rgba(10, 10, 10, 0.1);
-    border-color: rgba(10, 10, 10, 0.5);
-}
-
-/* Light Mode Styles */
-html.light-mode,
-body.light-mode {
-    background-color: #EDE4D3;
-    color: #0A0A0A;
-}
-
-body.light-mode a {
-    color: #0A0A0A;
-}
-
-body.light-mode a:visited {
-    color: #0A0A0A;
-}
-
-body.light-mode .greeting {
-    color: #0A0A0A;
-}
-
-body.light-mode .section.summary {
-    color: #0A0A0A;
-}
-
-body.light-mode h2 {
-    color: #0A0A0A;
-    opacity: 0.4;
-}
-
-body.light-mode .show-all {
-    color: #0A0A0A;
-    opacity: 0.4;
-}
-
-body.light-mode .overlay {
-    background-color: #FFFFFF;
-    border-color: rgba(10, 10, 10, 0.15);
-}
-
-body.light-mode .overlay-header {
-    border-color: rgba(10, 10, 10, 0.15);
-}
-
-body.light-mode .close-overlay {
-    color: #0A0A0A;
-}
-
-body.light-mode .abstract-line {
-    background: linear-gradient(to bottom, 
-        transparent 0%, 
-        rgba(10, 10, 10, 0.08) 20%, 
-        rgba(10, 10, 10, 0.08) 80%, 
-        transparent 100%);
 }
 
 .gold-entry {
@@ -308,40 +199,20 @@ body.light-mode .abstract-line {
     transition: all 0.3s ease;
 }
 
-body.light-mode .gold-entry {
-    color: #007FFF;
-}
-
 .gold-entry a {
     color: #FFB302;
-}
-
-body.light-mode .gold-entry a {
-    color: #007FFF;
 }
 
 .gold-entry a:visited {
     color: #FFB302;
 }
 
-body.light-mode .gold-entry a:visited {
-    color: #007FFF;
-}
-
 .gold-entry:hover {
     color: #FFC533;
 }
 
-body.light-mode .gold-entry:hover {
-    color: #0066CC;
-}
-
 .gold-entry:hover a {
     color: #FFC533;
-}
-
-body.light-mode .gold-entry:hover a {
-    color: #0066CC;
 }
 
 .gold-title {
@@ -349,40 +220,20 @@ body.light-mode .gold-entry:hover a {
     transition: color 0.3s ease;
 }
 
-body.light-mode .gold-title {
-    color: #007FFF;
-}
-
 .gold-title:hover {
     color: #FFC533;
-}
-
-body.light-mode .gold-title:hover {
-    color: #0066CC;
 }
 
 a.gold-title {
     color: #FFB302;
 }
 
-body.light-mode a.gold-title {
-    color: #007FFF;
-}
-
 a.gold-title:visited {
     color: #FFB302;
 }
 
-body.light-mode a.gold-title:visited {
-    color: #007FFF;
-}
-
 a.gold-title:hover {
     color: #FFC533;
-}
-
-body.light-mode a.gold-title:hover {
-    color: #0066CC;
 }
 
 
@@ -466,7 +317,7 @@ body.light-mode a.gold-title:hover {
     width: 100vw;
     height: 100vh;
     background-color: #0A0A0A;
-    border: 1px solid rgba(245, 240, 232, 0.15);
+    border: 1px solid rgba(245, 245, 245, 0.15);
     z-index: 100;
     display: none;
     padding: 48px;
@@ -523,7 +374,7 @@ body.light-mode a.gold-title:hover {
 }
 
 .close-overlay {
-    color: #F5F0E8;
+    color: #F5F5F5;
     opacity: 0.4;
     font-size: 13px;
     transition: all 0.3s ease;
