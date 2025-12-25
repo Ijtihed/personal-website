@@ -47,12 +47,12 @@ body {
 }
 
 .greeting .name {
-    color: #FFB302;
+    color: #FF4500;
     transition: color 0.3s ease;
 }
 
 .greeting:hover .name {
-    color: #FFC533;
+    color: #FF4500;
 }
 
 /* Abstract line - subtle diagonal */
@@ -234,6 +234,32 @@ a.gold-title:visited {
 
 a.gold-title:hover {
     color: #FFC533;
+}
+
+.linkedin-link {
+    color: #007FFF;
+}
+
+.linkedin-link:visited {
+    color: #007FFF;
+}
+
+.linkedin-link:hover {
+    color: #007FFF;
+    opacity: 0.8;
+}
+
+.nullfellows-link {
+    color: #FF0000;
+}
+
+.nullfellows-link:visited {
+    color: #FF0000;
+}
+
+.nullfellows-link:hover {
+    color: #FF0000;
+    opacity: 0.8;
 }
 
 /* Subtle hover effect on sections */
