@@ -1,3 +1,56 @@
+// Calculate duration between two dates
+function calculateDuration(startDate, endDate) {
+    // Parse dates (format: "YYYY-MM")
+    const [startYear, startMonth] = startDate.split('-').map(Number);
+    const end = endDate === 'present' ? new Date() : new Date(endDate + '-01');
+    const endYear = end.getFullYear();
+    const endMonth = end.getMonth() + 1; // getMonth() returns 0-11
+    
+    let years = endYear - startYear;
+    let months = endMonth - startMonth;
+    
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+    
+    // Format duration as "Xmo / Yy"
+    const parts = [];
+    if (months > 0) {
+        parts.push(`${months}mo`);
+    }
+    if (years > 0) {
+        parts.push(`${years}y`);
+    }
+    
+    return parts.length > 0 ? parts.join(' / ') : '<1mo';
+}
+
+// Update experience durations in overlay
+function updateExperienceDurations(overlay) {
+    if (overlay.id !== 'overlay-experiences') return;
+    
+    const experienceItems = overlay.querySelectorAll('.overlay-body p[data-start]');
+    experienceItems.forEach(item => {
+        const start = item.getAttribute('data-start');
+        const end = item.getAttribute('data-end');
+        
+        if (start && end) {
+            // Remove existing duration if any
+            const existingDuration = item.querySelector('.duration');
+            if (existingDuration) {
+                existingDuration.remove();
+            }
+            
+            const duration = calculateDuration(start, end);
+            const durationSpan = document.createElement('span');
+            durationSpan.className = 'duration';
+            durationSpan.textContent = ` (${duration})`;
+            item.appendChild(durationSpan);
+        }
+    });
+}
+
 // Overlay functionality
 document.addEventListener('DOMContentLoaded', function() {
     const showAllLinks = document.querySelectorAll('.show-all');
@@ -12,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const overlay = document.getElementById(`overlay-${overlayId}`);
             if (overlay) {
                 overlay.classList.add('active');
+                updateExperienceDurations(overlay);
             }
         });
     });

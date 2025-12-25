@@ -38,6 +38,7 @@ body {
     margin-bottom: 2em;
     transition: transform 0.3s ease;
     animation: fadeInUp 0.6s ease-out 0.1s both;
+    position: relative;
 }
 
 .greeting:hover {
@@ -77,7 +78,7 @@ body {
     padding: 48px;
     padding-top: 24px;
     padding-left: 80px;
-    max-width: 560px;
+    max-width: 600px;
     z-index: 10;
     animation: fadeInUp 0.6s ease-out;
 }
@@ -192,14 +193,66 @@ a:hover {
     transform: translateX(2px);
 }
 
+.gold-entry {
+    color: #FFB302;
+    transition: all 0.3s ease;
+}
+
+.gold-entry a {
+    color: #FFB302;
+}
+
+.gold-entry a:visited {
+    color: #FFB302;
+}
+
+.gold-entry:hover {
+    color: #FFC533;
+}
+
+.gold-entry:hover a {
+    color: #FFC533;
+}
+
+.gold-title {
+    color: #FFB302;
+    transition: color 0.3s ease;
+}
+
+.gold-title:hover {
+    color: #FFC533;
+}
+
+a.gold-title {
+    color: #FFB302;
+}
+
+a.gold-title:visited {
+    color: #FFB302;
+}
+
+a.gold-title:hover {
+    color: #FFC533;
+}
+
 /* Subtle hover effect on sections */
 .section:hover h2 {
     opacity: 0.6;
     transition: opacity 0.2s ease;
 }
 
-/* Cool detail: subtle number indicator - aligned with summary section */
+/* Hide number for summary and links sections */
 .section.summary::before {
+    display: none;
+}
+
+.section.links::before {
+    display: none;
+}
+
+/* Section numbers start from interests (01) through education (05) */
+/* Using nth-child to count from content container: greeting(1), summary(2), interests(3), etc. */
+.content > .section:nth-child(3)::before {
     content: '01';
     position: absolute;
     top: 0;
@@ -210,8 +263,7 @@ a:hover {
     font-weight: 500;
 }
 
-/* Section numbers - subtle, stacked on right */
-.section:nth-of-type(2)::before {
+.content > .section:nth-child(4)::before {
     content: '02';
     position: absolute;
     top: 0;
@@ -222,7 +274,7 @@ a:hover {
     font-weight: 500;
 }
 
-.section:nth-of-type(3)::before {
+.content > .section:nth-child(5)::before {
     content: '03';
     position: absolute;
     top: 0;
@@ -233,7 +285,7 @@ a:hover {
     font-weight: 500;
 }
 
-.section:nth-of-type(4)::before {
+.content > .section:nth-child(6)::before {
     content: '04';
     position: absolute;
     top: 0;
@@ -244,7 +296,7 @@ a:hover {
     font-weight: 500;
 }
 
-.section:nth-of-type(5)::before {
+.content > .section:nth-child(7)::before {
     content: '05';
     position: absolute;
     top: 0;
@@ -253,11 +305,6 @@ a:hover {
     opacity: 0.12;
     letter-spacing: 1px;
     font-weight: 500;
-}
-
-/* Ensure links section doesn't get a number */
-.section.links::before {
-    display: none;
 }
 
 /* Overlay */
@@ -293,7 +340,7 @@ a:hover {
 }
 
 .overlay-content {
-    max-width: 560px;
+    max-width: 600px;
     width: 100%;
     pointer-events: auto;
 }
