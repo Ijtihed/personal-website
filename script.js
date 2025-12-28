@@ -1,10 +1,9 @@
 // Calculate duration between two dates
 function calculateDuration(startDate, endDate) {
-    // Parse dates (format: "YYYY-MM")
     const [startYear, startMonth] = startDate.split('-').map(Number);
     const end = endDate === 'present' ? new Date() : new Date(endDate + '-01');
     const endYear = end.getFullYear();
-    const endMonth = end.getMonth() + 1; // getMonth() returns 0-11
+    const endMonth = end.getMonth() + 1;
     
     let years = endYear - startYear;
     let months = endMonth - startMonth;
@@ -14,7 +13,6 @@ function calculateDuration(startDate, endDate) {
         months += 12;
     }
     
-    // Format duration as "Xmo / Yy"
     const parts = [];
     if (months > 0) {
         parts.push(`${months}mo`);
@@ -36,7 +34,6 @@ function updateExperienceDurations(overlay) {
         const end = item.getAttribute('data-end');
         
         if (start && end) {
-            // Remove existing duration if any
             const existingDuration = item.querySelector('.duration');
             if (existingDuration) {
                 existingDuration.remove();
@@ -51,13 +48,39 @@ function updateExperienceDurations(overlay) {
     });
 }
 
-// Overlay functionality
+// Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetSection = this.getAttribute('data-section');
+            const target = document.getElementById(`section-${targetSection}`);
+            
+            if (target && target.classList.contains('active')) {
+                // If already active, collapse it
+                target.classList.remove('active');
+            } else {
+                // Hide all sections
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show target section
+                if (target) {
+                    target.classList.add('active');
+                }
+            }
+        });
+    });
+    
+    // Overlay functionality
     const showAllLinks = document.querySelectorAll('.show-all');
     const overlays = document.querySelectorAll('.overlay');
     const closeLinks = document.querySelectorAll('.close-overlay');
     
-    // Open overlay
     showAllLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -70,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close overlay
     function closeAllOverlays() {
         overlays.forEach(overlay => {
             overlay.classList.remove('active');
@@ -84,25 +106,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close on ESC key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeAllOverlays();
         }
     });
     
-    // Close on overlay background click
     overlays.forEach(overlay => {
-        const overlayContent = overlay.querySelector('.overlay-content');
         overlay.addEventListener('click', function(e) {
             if (e.target === overlay) {
                 closeAllOverlays();
             }
         });
-        if (overlayContent) {
-            overlayContent.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        }
     });
 });
