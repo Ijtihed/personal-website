@@ -136,3 +136,11 @@ a:visited {
 .overlay-body p {
     margin-bottom: 4px;
 }
+
+.profile-pic {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+    display: block;
+}
