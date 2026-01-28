@@ -39,10 +39,10 @@ window.SITE_NODES = {
     html: `
       <p class="block">I work as a founding software engineer.</p>
       <p class="block">
-        Currently at
-        <a class="ext" href="https://www.kovahq.com" target="_blank" rel="noreferrer">Kova Labs</a>.
-        Also involved with
+        Currently involved with
         <a class="ext" href="https://nullfellows.com" target="_blank" rel="noreferrer">Null Fellows</a>.
+        Research with
+        <a class="ext" href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">Aalto Computational Behavior Lab</a>.
       </p>
       <p class="block"><a class="reveal" href="#" data-reveal="professional_detail">What I do</a>.</p>
       <p class="block"><a class="reveal" href="#" data-reveal="professional_experiences">All experiences</a>.</p>
@@ -66,9 +66,9 @@ window.SITE_NODES = {
 
   professional_experiences: {
     html: `
-      <p class="block"><a class="ext" href="https://www.kovahq.com" target="_blank" rel="noreferrer">Kova Labs</a> — founding engineer — 2025–</p>
       <p class="block"><a class="ext" href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">Aalto Computational Behavior Lab</a> — research assistant — 2025–</p>
       <p class="block"><a class="ext" href="https://nullfellows.com" target="_blank" rel="noreferrer">Null Fellows</a> — {lead} — 2025–</p>
+      <p class="block"><a class="ext" href="https://www.kovahq.com" target="_blank" rel="noreferrer">Kova Labs</a> — founding engineer — 2025–2026</p>
       <p class="block"><a class="ext" href="https://sensofusion.com" target="_blank" rel="noreferrer">Sensofusion</a> — software engineer (systems) — 2025</p>
       <p class="block">Aalto — teaching assistant — 2025</p>
       <p class="block">Bulgarian Academy of Sciences — research intern — 2023</p>
@@ -205,6 +205,7 @@ window.SITE_NODES = {
     `,
   },
 };
+
 
 
 
