@@ -100,6 +100,7 @@ window.SITE_NODES = {
 
   research_education: {
     html: `
+      <p class="block">ETH Zürich — Graduate Exchange in Computer Science</p>
       <p class="block">Aalto University — MSc Pure Math</p>
       <p class="block">Aalto University — BSc Computational Engineering</p>
     `,
