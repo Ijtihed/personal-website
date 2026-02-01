@@ -59,19 +59,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = this.getAttribute('data-section');
             const target = document.getElementById(`section-${targetSection}`);
             
-            if (target && target.classList.contains('active')) {
-                // If already active, collapse it
-                target.classList.remove('active');
-            } else {
-                // Hide all sections
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Show target section
-                if (target) {
-                    target.classList.add('active');
-                }
+            // Hide all sections and remove active states
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+            
+            // Show target section and mark nav link as active
+            if (target) {
+                target.classList.add('active');
+                this.classList.add('active');
             }
         });
     });

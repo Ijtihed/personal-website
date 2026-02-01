@@ -5,21 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ijti.</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <p class="cv-top"><a href="cv.pdf" target="_blank" rel="noreferrer">cv</a></p>
-  <div class="content">
-    <p class="name">hey, i'm ijtihed.</p>
+  <div class="container">
+    <aside class="sidebar">
+      <a href="cv.pdf" target="_blank" rel="noreferrer" class="cv-link">cv</a>
+      <nav class="nav">
+        <a href="#" class="nav-link active" data-section="about">about</a>
+        <a href="#" class="nav-link" data-section="experience">experience</a>
+        <a href="#" class="nav-link" data-section="projects">projects</a>
+        <a href="#" class="nav-link" data-section="education">education</a>
+      </nav>
+    </aside>
     
-    <div class="nav">
-      <a href="#" class="nav-link" data-section="about">[about]</a>
-      <a href="#" class="nav-link" data-section="experience">[experience]</a>
-      <a href="#" class="nav-link" data-section="projects">[projects]</a>
-      <a href="#" class="nav-link" data-section="education">[education]</a>
-    </div>
+    <main class="content">
+      <p class="name">ijtihed</p>
     
-    <div id="section-about" class="section">
+    <div id="section-about" class="section active">
       <img src="pfp.png" alt="ijtihed" class="profile-pic" />
       <p>i do software engineering & mathematics. currently a research assistant at <a href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">aalto uni computational behavior lab</a> and building with <a href="https://nullfellows.com" target="_blank" rel="noreferrer">null fellows</a>.</p>
     </div>
@@ -45,9 +51,10 @@
       <p><a href="#" class="show-all" data-overlay="projects">show all (projects)</a></p>
     </div>
     
-    <div class="contact">
-      <p><a href="https://x.com/ijtihedki" target="_blank" rel="noreferrer">x</a> <a href="https://www.linkedin.com/in/ijtihed/" target="_blank" rel="noreferrer">linkedin</a> <a href="https://github.com/Ijtihed" target="_blank" rel="noreferrer">github</a> <a href="mailto:YOUR_EMAIL_HERE">email</a></p>
-    </div>
+      <div class="contact">
+        <p><a href="https://x.com/ijtihedki" target="_blank" rel="noreferrer">x</a> <a href="https://www.linkedin.com/in/ijtihed/" target="_blank" rel="noreferrer">linkedin</a> <a href="https://github.com/Ijtihed" target="_blank" rel="noreferrer">github</a> <a href="mailto:YOUR_EMAIL_HERE">email</a></p>
+      </div>
+    </main>
   </div>
 
   <div id="overlay-experiences" class="overlay">
