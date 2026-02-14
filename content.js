@@ -109,7 +109,6 @@ window.SITE_NODES = {
       <p class="block">A few things I have built.</p>
       <p class="block">
         <a class="reveal" href="#" data-reveal="proj_site">This site</a>.
-        <a class="reveal" href="#" data-reveal="proj_chrono">Real time physics</a>.
         <a class="reveal" href="#" data-reveal="proj_vr">VR research tooling</a>.
       </p>
       <p class="block"><a class="reveal" href="#" data-reveal="projects_more">More projects</a>.</p>
@@ -121,16 +120,6 @@ window.SITE_NODES = {
     html: `
       <p class="block">Minimal, fast, and readable.</p>
       <p class="block">Designed to expand by clicking instead of scrolling menus.</p>
-    `,
-  },
-
-  proj_chrono: {
-    html: `
-      <p class="block">
-        Real time physics work using
-        <a class="ext" href="https://projectchrono.org/" target="_blank" rel="noreferrer">Project Chrono</a>.
-      </p>
-      <p class="block">Dynamics engine for simulations and robotics applications.</p>
     `,
   },
 
