@@ -185,7 +185,7 @@ window.SITE_NODES = {
     html: `
       <p class="block">You can reach me here.</p>
       <p class="block">
-        <a class="ext" href="mailto:YOUR_EMAIL_HERE">Email</a>.
+        <a class="ext" href="mailto:ijtihedk@gmail.com">Email</a>.
         <a class="ext" href="https://www.linkedin.com/in/ijtihed/" target="_blank" rel="noreferrer">LinkedIn</a>.
         <a class="ext" href="https://github.com/Ijtihed" target="_blank" rel="noreferrer">GitHub</a>.
         <a class="ext" href="cv.pdf" target="_blank" rel="noreferrer">CV</a>.

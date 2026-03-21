@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ijti.</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <a href="cv.pdf" target="_blank" rel="noreferrer" class="cv-link">cv</a>
+      <nav class="nav">
+        <a href="#" class="nav-link active" data-section="about">about</a>
+        <a href="#" class="nav-link" data-section="experience">experience</a>
+        <a href="#" class="nav-link" data-section="projects">projects</a>
+        <a href="#" class="nav-link" data-section="education">education</a>
+      </nav>
+    </aside>
+    
+    <main class="content">
+      <p class="name">ijtihed</p>
+    
+    <div id="section-about" class="section active">
+      <img src="pfp.png" alt="ijtihed" class="profile-pic" />
+      <p>i do software engineering & mathematics. currently a research assistant at <a href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">aalto uni computational behavior lab</a> and building with <a href="https://nullfellows.com" target="_blank" rel="noreferrer">null fellows</a>.</p>
+    </div>
+    
+    <div id="section-experience" class="section">
+      <p><a href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">aalto uni computational behavior lab</a> — research assistant — present</p>
+      <p><a href="https://nullfellows.com" target="_blank" rel="noreferrer">null fellows</a> — {lead} — present</p>
+      <p><a href="https://www.kovahq.com" target="_blank" rel="noreferrer">kova labs</a> — founding engineer — 2025–2026</p>
+      <p><a href="https://sensofusion.com" target="_blank" rel="noreferrer">sensofusion</a> — software engineer — 2025</p>
+      <p><a href="#" class="show-all" data-overlay="experiences">show all (experiences)</a></p>
+    </div>
+    
+    <div id="section-education" class="section">
+      <p>aalto university — computational engineering</p>
+      <p><a href="#" class="show-all" data-overlay="education">show all (education)</a></p>
+    </div>
+    
+    <div id="section-projects" class="section">
+      <p>self-hosted home server (lab)</p>
+      <p><a href="https://nullfellows.com" target="_blank" rel="noreferrer">nullfellows.com</a></p>
+      <p>race-car suspension bracket (topology optimization)</p>
+      <p><a href="#" class="show-all" data-overlay="projects">show all (projects)</a></p>
+    </div>
+    
+      <div class="contact">
+        <p><a href="https://x.com/ijtihedki" target="_blank" rel="noreferrer">x</a> <a href="https://www.linkedin.com/in/ijtihed/" target="_blank" rel="noreferrer">linkedin</a> <a href="https://github.com/Ijtihed" target="_blank" rel="noreferrer">github</a> <a href="mailto:YOUR_EMAIL_HERE">email</a></p>
+      </div>
+    </main>
+  </div>
+
+  <div id="overlay-experiences" class="overlay">
+    <div class="overlay-content">
+      <div class="overlay-header">
+        <p class="label">experiences</p>
+        <a href="#" class="close-overlay">close</a>
+      </div>
+      <div class="overlay-body">
+        <p data-start="2025-11" data-end="present"><a href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">aalto uni computational behavior lab</a> — research assistant — present</p>
+        <p data-start="2025-07" data-end="present"><a href="https://nullfellows.com" target="_blank" rel="noreferrer">null fellows</a> — {lead} — present</p>
+        <p data-start="2025-10" data-end="2026-02"><a href="https://www.kovahq.com" target="_blank" rel="noreferrer">kova labs</a> — founding engineer — 2025–2026</p>
+        <p data-start="2025-09" data-end="2026-01">aalto uni — teaching assistant — 2025–2026</p>
+        <p data-start="2025-03" data-end="2025-11"><a href="https://sensofusion.com" target="_blank" rel="noreferrer">sensofusion</a> — software engineer — 2025</p>
+        <p data-start="2023-06" data-end="2023-08">bulgarian academy of sciences — research intern — 2023</p>
+        <p data-start="2022-08" data-end="2024-08">king abdulaziz university — research assistant — 2022–2024</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlay-projects" class="overlay">
+    <div class="overlay-content">
+      <div class="overlay-header">
+        <p class="label">projects</p>
+        <a href="#" class="close-overlay">close</a>
+      </div>
+      <div class="overlay-body">
+        <p>self-hosted home server (lab)</p>
+        <p><a href="https://nullfellows.com" target="_blank" rel="noreferrer">nullfellows.com</a></p>
+        <p><a href="https://www.ijtihed.com" target="_blank" rel="noreferrer">ijtihed.com</a></p>
+        <p>race-car suspension bracket (topology optimization)</p>
+        <p>VR based physical AI model</p>
+        <p><a href="https://github.com/Ijtihed/EmotionDetection-Game" target="_blank" rel="noreferrer">the yappin' spirit</a></p>
+        <p><a href="https://store.steampowered.com/app/2629610/Maze_Maverick/" target="_blank" rel="noreferrer">maze maverick</a></p>
+        <p><a href="https://store.steampowered.com/app/2384470/Blood_Pivot/" target="_blank" rel="noreferrer">blood pivot</a></p>
+        <p><a href="https://doi.org/10.7759/cureus.44889" target="_blank" rel="noreferrer">publication (doi)</a></p>
+        <p>qr generator</p>
+        <p>holy quran offline reader</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlay-education" class="overlay">
+    <div class="overlay-content">
+      <div class="overlay-header">
+        <p class="label">education</p>
+        <a href="#" class="close-overlay">close</a>
+      </div>
+      <div class="overlay-body">
+        <p>aalto university — computational engineering</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
