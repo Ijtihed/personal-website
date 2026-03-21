@@ -160,11 +160,112 @@
         opacity: 1;
         transform: translateX(-50%) translateY(0);
       }
+      .mobile-desktop-note {
+        display: none;
+      }
+      .mobile-mini-section {
+        display: none;
+      }
+      @media (min-width: 481px) and (min-height: 901px) {
+        .text-\[0\.55rem\] {
+          font-size: 0.66rem !important;
+        }
+        .text-\[0\.6rem\] {
+          font-size: 0.72rem !important;
+        }
+        .text-\[0\.7rem\] {
+          font-size: 0.84rem !important;
+        }
+        .text-\[0\.75rem\] {
+          font-size: 0.9rem !important;
+        }
+      }
+      @media (max-width: 480px), (max-height: 900px) {
+        header,
+        .mobile-hide,
+        footer,
+        #overlay-container,
+        #custom-cursor,
+        #ashley-note {
+          display: none !important;
+        }
+        body {
+          cursor: default;
+        }
+        .mobile-desktop-note {
+          display: block;
+          position: fixed;
+          left: 50%;
+          bottom: 1.2rem;
+          transform: translateX(-50%);
+          font-family: "JetBrains Mono";
+          font-size: 0.62rem;
+          text-transform: lowercase;
+          letter-spacing: 0.12em;
+          color: #8e9192;
+          z-index: 60;
+          white-space: nowrap;
+        }
+        .mobile-mini-section {
+          display: block;
+          position: fixed;
+          top: 1rem;
+          z-index: 60;
+          max-width: 44vw;
+          pointer-events: none;
+        }
+        .mobile-mini-left {
+          left: 1rem;
+          text-align: left;
+        }
+        .mobile-mini-right {
+          right: 1rem;
+          text-align: right;
+        }
+        .mobile-mini-title {
+          font-family: "JetBrains Mono";
+          font-size: 0.55rem;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #525252;
+          margin-bottom: 0.35rem;
+        }
+        .mobile-mini-item {
+          font-family: "JetBrains Mono";
+          font-size: 0.62rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #a3a3a3;
+          margin-bottom: 0.2rem;
+        }
+        .mobile-cv-link {
+          text-align: center;
+          letter-spacing: 0.4em;
+          width: auto;
+          white-space: nowrap;
+        }
+        .mobile-main-name {
+          font-size: 22.5vw !important;
+        }
+      }
     </style>
 </head>
 <body class="text-on-surface font-mono selection:bg-white selection:text-black">
 <div id="custom-cursor"></div>
 <div id="ashley-note" class="ashley-note">thanks for the love and support Ashley <3</div>
+<section class="mobile-mini-section mobile-mini-left">
+<p class="mobile-mini-title">currently working on</p>
+<p class="mobile-mini-item">Supercell</p>
+<p class="mobile-mini-item">Aalto CBL</p>
+</section>
+<section class="mobile-mini-section mobile-mini-right">
+<p class="mobile-mini-title">projects</p>
+<p id="mobile-project-1" class="mobile-mini-item">Agentic Scribe</p>
+<p id="mobile-project-2" class="mobile-mini-item">SILTA</p>
+<p id="mobile-project-3" class="mobile-mini-item">Null Fellows</p>
+<p id="mobile-project-4" class="mobile-mini-item">Maze Maverick</p>
+<p id="mobile-project-5" class="mobile-mini-item">Blood Pivot</p>
+</section>
 <!-- TopNavBar Shell -->
 <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center safe-zone-padding mix-blend-difference">
 <div id="brand-logo" class="text-xl font-bold tracking-tighter text-white font-headline cursor-pointer">ijti</div>
@@ -178,25 +279,25 @@
 <!-- Main Content Canvas (The Monolith) -->
 <main class="relative h-screen w-full flex items-center justify-center z-10">
 <!-- The Monolith -->
-<h1 class="font-headline font-extrabold text-[15vw] leading-none tracking-tighter text-white opacity-95 select-none pointer-events-none">
+<h1 class="mobile-main-name font-headline font-extrabold text-[15vw] leading-none tracking-tighter text-white opacity-95 select-none pointer-events-none">
             ijtihed.
         </h1>
-<a class="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-32 md:translate-y-44 font-mono text-[0.8rem] uppercase tracking-[0.8em] text-neutral-500 hover:text-white transition-all duration-700 z-20 px-4 py-2" href="cv.pdf" target="_blank">Curriculum Vitae.</a>
+<a class="mobile-cv-link absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-32 md:translate-y-44 font-mono text-[0.8rem] uppercase tracking-[0.8em] text-neutral-500 hover:text-white transition-all duration-700 z-20 px-4 py-2" href="cv.pdf" target="_blank">Curriculum Vitae.</a>
 <!-- Extreme Edge Content: Experience (Top Left Corner) -->
-<section class="absolute top-28 left-10 max-w-[12rem] safe-zone-padding pt-0 pl-0">
-<span class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest block mb-4 cursor-pointer hover:text-neutral-400 transition-colors py-2" onclick="openOverlay('experience')">Experience</span>
+<section class="absolute top-28 left-10 max-w-[12rem] safe-zone-padding pt-0 pl-0 mobile-hide">
+<span class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest block mb-2 py-2">Currently Working On</span>
 <ul class="space-y-1">
-<li class="group cursor-pointer py-2" onclick="openOverlay('experience')">
-<p class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors">Aalto CBL</p>
+<li class="group py-2">
+<a class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://ailab.supercell.com" target="_blank" rel="noreferrer">Supercell</a>
 </li>
-<li class="group cursor-pointer py-2" onclick="openOverlay('experience')">
-<p class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors">Null Fellows</p>
+<li class="group py-2">
+<a class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">Aalto CBL</a>
 </li>
 </ul>
 </section>
 <!-- Extreme Edge Content: Education (Bottom Left Corner) -->
-<section class="absolute bottom-28 left-10 max-w-[12rem] safe-zone-padding pb-0 pl-0 hide-on-short-height">
-<span class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest block mb-4 cursor-pointer hover:text-neutral-400 transition-colors py-2" onclick="openOverlay('education')">Education</span>
+<section class="absolute bottom-28 left-10 max-w-[12rem] safe-zone-padding pb-0 pl-0 hide-on-short-height mobile-hide">
+<span class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest block mb-2 cursor-pointer hover:text-neutral-400 transition-colors py-2" onclick="openOverlay('education')">Education</span>
 <ul class="space-y-1">
 <li class="group cursor-pointer py-2" onclick="openOverlay('education')">
 <p class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors">Aalto University</p>
@@ -204,24 +305,25 @@
 </ul>
 </section>
 <!-- Extreme Edge Content: Projects (Top Right Corner) -->
-<section class="absolute top-28 right-10 text-right max-w-[12rem] safe-zone-padding pt-0 pr-0">
-<span class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest block mb-4 cursor-pointer hover:text-neutral-400 transition-colors py-2" onclick="openOverlay('projects')">Selected Projects</span>
+<section class="absolute top-28 right-10 text-right max-w-[12rem] safe-zone-padding pt-0 pr-0 mobile-hide">
+<span class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest block mb-2 py-2">Selected Projects</span>
 <ul class="space-y-1">
-<li class="group cursor-pointer py-2" onclick="openOverlay('projects')">
-<p id="selected-project-1" class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors">Agentic Scribe</p>
+<li class="group py-2">
+<a id="selected-project-1" class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://github.com/Ijtihed/Skribe" target="_blank" rel="noreferrer">Agentic Scribe</a>
 </li>
-<li class="group cursor-pointer py-2" onclick="openOverlay('projects')">
-<p id="selected-project-2" class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors">SILTA</p>
+<li class="group py-2">
+<a id="selected-project-2" class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://www.siltahouse.com/home" target="_blank" rel="noreferrer">SILTA</a>
 </li>
 </ul>
 <button class="font-mono text-[0.55rem] text-neutral-700 hover:text-white uppercase tracking-widest mt-3 transition-colors" onclick="setRandomSelectedProjects()">Reload</button>
 </section>
 <!-- Extreme Edge Content: Status/Metadata (Bottom Right Corner) -->
-<section class="absolute bottom-28 right-10 text-right max-w-[14rem] safe-zone-padding pb-0 pr-0 hide-on-short-height">
+<section class="absolute bottom-28 right-10 text-right max-w-[14rem] safe-zone-padding pb-0 pr-0 hide-on-short-height mobile-hide">
 <p class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest py-2">Active</p>
 <p class="font-mono text-[0.55rem] text-neutral-700 uppercase tracking-widest mt-1">60.1856° N, 24.8276° E</p>
 </section>
 </main>
+<div class="mobile-desktop-note">for more info / better experience; use desktop.</div>
 <!-- Footer Shell -->
 <footer class="fixed bottom-0 left-0 w-full z-50 flex justify-between items-center safe-zone-padding mix-blend-difference">
 <div class="text-neutral-500 font-mono text-[0.6rem] uppercase tracking-[0.2em]">© 2026 IJTIHED</div>
@@ -406,24 +508,37 @@
 
         // --- Random Selected Projects (excludes research paper) ---
         const selectedProjects = [
-            "Null Fellows",
-            "Home Server",
-            "Agentic Scribe",
-            "SILTA",
-            "Race-Car Bracket",
-            "The Yappin' Spirit",
-            "Maze Maverick",
-            "Blood Pivot"
+            { name: "Null Fellows", url: "https://nullfellows.com" },
+            { name: "Agentic Scribe", url: "https://github.com/Ijtihed/Skribe" },
+            { name: "SILTA", url: "https://www.siltahouse.com/home" },
+            { name: "The Yappin' Spirit", url: "https://github.com/Ijtihed/EmotionDetection-Game" },
+            { name: "Maze Maverick", url: "https://store.steampowered.com/app/2629610/Maze_Maverick/" },
+            { name: "Blood Pivot", url: "https://store.steampowered.com/app/2384470/Blood_Pivot/" }
         ];
 
         function setRandomSelectedProjects() {
             const firstEl = document.getElementById('selected-project-1');
             const secondEl = document.getElementById('selected-project-2');
-            if (!firstEl || !secondEl) return;
-
             const shuffled = [...selectedProjects].sort(() => Math.random() - 0.5);
-            firstEl.textContent = shuffled[0];
-            secondEl.textContent = shuffled[1];
+            if (firstEl && secondEl) {
+                firstEl.textContent = shuffled[0].name;
+                secondEl.textContent = shuffled[1].name;
+                firstEl.href = shuffled[0].url;
+                secondEl.href = shuffled[1].url;
+            }
+
+            const mobileProjectEls = [
+                document.getElementById('mobile-project-1'),
+                document.getElementById('mobile-project-2'),
+                document.getElementById('mobile-project-3'),
+                document.getElementById('mobile-project-4'),
+                document.getElementById('mobile-project-5')
+            ];
+            mobileProjectEls.forEach((el, idx) => {
+                if (!el) return;
+                const item = shuffled[idx + 2] || shuffled[idx % shuffled.length];
+                el.textContent = item.name;
+            });
         }
 
         setRandomSelectedProjects();
