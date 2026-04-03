@@ -136,7 +136,6 @@ window.SITE_NODES = {
       <p class="block"><a class="ext" href="https://github.com/Ijtihed/Skribe" target="_blank" rel="noreferrer">Skribe</a>.</p>
       <p class="block"><a class="ext" href="https://github.com/Ijtihed/EmotionDetection-Game" target="_blank" rel="noreferrer">The Yappin' Spirit</a>.</p>
       <p class="block"><a class="ext" href="https://nullfellows.com" target="_blank" rel="noreferrer">nullfellows.com</a>.</p>
-      <p class="block"><a class="ext" href="https://doi.org/10.7759/cureus.44889" target="_blank" rel="noreferrer">Publication (DOI)</a>.</p>
       <p class="block">QR generator.</p>
       <p class="block">Holy Quran offline reader.</p>
     `,
