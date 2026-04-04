@@ -194,7 +194,7 @@
           font-size: 0.9rem !important;
         }
       }
-      /* Mobile layout: narrow viewports, OR original phone fingerprint (touch + coarse pointer + ≤600px + portrait) */
+      /* Mobile layout when either: (1) viewport ≤1024px, or (2) classic touch phone portrait */
       @media (max-width: 1024px),
              (hover: none) and (pointer: coarse) and (max-width: 600px) and (max-aspect-ratio: 10/16) {
         header,
