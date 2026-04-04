@@ -89,7 +89,6 @@
       body {
         background-color: #000000;
         overflow: hidden;
-        cursor: crosshair;
       }
       .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 20;
@@ -136,9 +135,10 @@
       .safe-zone-padding {
         padding: 2.5rem; /* ~40px */
       }
-      /* Custom Cursor adjustment */
-      body {
-          cursor: none;
+      /* Custom cursor: hide native pointer (Tailwind cursor-pointer would otherwise win) */
+      body,
+      body * {
+        cursor: none !important;
       }
       #custom-cursor {
           width: 8px;
@@ -200,8 +200,9 @@
         #ashley-note {
           display: none !important;
         }
-        body {
-          cursor: default;
+        body,
+        body * {
+          cursor: default !important;
         }
         .mobile-desktop-note {
           display: block;
@@ -434,7 +435,7 @@
 <p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Internal game testing tool for Supercell.</p>
 </div>
 <div class="group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" onclick="window.open('https://nullfellows.com','_blank')">
-<span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">02 / PLATFORM</span>
+<span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">02 / STARTUP</span>
 <h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">Null Fellows</h3>
 <p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">{ }</p>
 </div>
