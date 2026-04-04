@@ -194,7 +194,9 @@
           font-size: 0.9rem !important;
         }
       }
-      @media (hover: none) and (pointer: coarse) and (max-width: 600px) and (max-aspect-ratio: 10/16) {
+      /* Mobile layout: narrow viewports, OR original phone fingerprint (touch + coarse pointer + ≤600px + portrait) */
+      @media (max-width: 1024px),
+             (hover: none) and (pointer: coarse) and (max-width: 600px) and (max-aspect-ratio: 10/16) {
         header,
         .mobile-hide,
         footer,
