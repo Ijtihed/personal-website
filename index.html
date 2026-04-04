@@ -171,11 +171,14 @@
         opacity: 1;
         transform: translateX(-50%) translateY(0);
       }
-      .mobile-desktop-note {
-        display: none;
-      }
       .mobile-mini-section {
         display: none;
+      }
+      .mobile-only {
+        display: none;
+      }
+      .mobile-opensource {
+        font-family: "JetBrains Mono", monospace;
       }
       @media (min-width: 481px) and (min-height: 901px) {
         .text-\[0\.55rem\] {
@@ -202,20 +205,6 @@
         }
         body {
           cursor: default;
-        }
-        .mobile-desktop-note {
-          display: block;
-          position: fixed;
-          left: 50%;
-          bottom: 1.2rem;
-          transform: translateX(-50%);
-          font-family: "JetBrains Mono";
-          font-size: 0.62rem;
-          text-transform: lowercase;
-          letter-spacing: 0.12em;
-          color: #8e9192;
-          z-index: 60;
-          white-space: nowrap;
         }
         .mobile-mini-section {
           display: block;
@@ -258,6 +247,22 @@
         .mobile-main-name {
           font-size: 22.5vw !important;
         }
+        .mobile-only {
+          display: block;
+        }
+        .mobile-opensource {
+          position: fixed;
+          left: 0.65rem;
+          right: 0.65rem;
+          bottom: 1rem;
+          max-height: none;
+          overflow: visible;
+          z-index: 55;
+          pointer-events: auto;
+        }
+        .mobile-opensource * {
+          pointer-events: auto;
+        }
       }
     </style>
 </head>
@@ -267,7 +272,7 @@
 <section class="mobile-mini-section mobile-mini-left">
 <p class="mobile-mini-title">currently working on</p>
 <p class="mobile-mini-item">Supercell</p>
-<p class="mobile-mini-item">Aalto CBL</p>
+<p class="mobile-mini-item">Null Fellows</p>
 </section>
 <section class="mobile-mini-section mobile-mini-right">
 <p class="mobile-mini-title">projects</p>
@@ -277,6 +282,10 @@
 <p id="mobile-project-4" class="mobile-mini-item">Maze Maverick</p>
 <p id="mobile-project-5" class="mobile-mini-item">Blood Pivot</p>
 </section>
+<section id="mobile-opensource" class="mobile-only mobile-opensource" aria-label="Latest open source contributions">
+<div id="oss-mount-mobile" class="text-center"></div>
+<p id="oss-status-mobile" class="font-mono text-[0.65rem] text-neutral-600 mt-1 uppercase tracking-widest text-center"></p>
+</section>
 <!-- TopNavBar Shell -->
 <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center safe-zone-padding mix-blend-difference">
 <div id="brand-logo" class="text-xl font-bold tracking-tighter text-white font-headline cursor-pointer">ijti</div>
@@ -284,6 +293,7 @@
 <button class="px-6 py-3 text-neutral-500 hover:text-white transition-colors font-mono text-[0.6rem] uppercase tracking-[0.2em]" onclick="openOverlay('experience')">Experience</button>
 <button class="px-6 py-3 text-neutral-500 hover:text-white transition-colors font-mono text-[0.6rem] uppercase tracking-[0.2em]" onclick="openOverlay('education')">Education</button>
 <button class="px-6 py-3 text-neutral-500 hover:text-white transition-colors font-mono text-[0.6rem] uppercase tracking-[0.2em]" onclick="openOverlay('projects')">Projects</button>
+<button class="px-6 py-3 text-neutral-500 hover:text-white transition-colors font-mono text-[0.6rem] uppercase tracking-[0.2em]" onclick="openOverlay('opensource')">Open Source</button>
 </nav>
 <a class="px-6 py-3 text-white font-mono text-[0.6rem] uppercase tracking-[0.2em] hover:opacity-70 transition-opacity" href="mailto:ijtihedk@gmail.com">Contact</a>
 </header>
@@ -302,7 +312,7 @@
 <a class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://ailab.supercell.com" target="_blank" rel="noreferrer">Supercell</a>
 </li>
 <li class="group py-2">
-<a class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">Aalto CBL</a>
+<a class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://nullfellows.com" target="_blank" rel="noreferrer">Null Fellows</a>
 </li>
 </ul>
 </section>
@@ -334,7 +344,6 @@
 <p class="font-mono text-[0.55rem] text-neutral-700 uppercase tracking-widest mt-1">60.1856° N, 24.8276° E</p>
 </section>
 </main>
-<div class="mobile-desktop-note">for more info / better experience; use desktop.</div>
 <!-- Footer Shell -->
 <footer class="fixed bottom-0 left-0 w-full z-50 flex justify-between items-center safe-zone-padding mix-blend-difference">
 <div class="text-neutral-500 font-mono text-[0.6rem] uppercase tracking-[0.2em]">© 2026 IJTIHED</div>
@@ -362,17 +371,17 @@
 </div>
 <div class="flex justify-between items-end border-b border-neutral-900 pb-12 group">
 <div class="max-w-md">
-<h3 class="font-headline text-3xl font-light tracking-tight mb-2 text-white"><a href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">Aalto Computational Behavior Lab</a></h3>
-<p class="role-title font-mono text-[0.6rem] text-neutral-500 uppercase tracking-widest">Research Assistant</p>
+<h3 class="font-headline text-3xl font-light tracking-tight mb-2 text-white"><a href="https://nullfellows.com" target="_blank" rel="noreferrer">Null Fellows</a></h3>
+<p class="role-title font-mono text-[0.6rem] text-neutral-500 uppercase tracking-widest">{ }</p>
 </div>
 <span class="font-mono text-[0.6rem] text-neutral-400 tabular-nums">Present</span>
 </div>
 <div class="flex justify-between items-end border-b border-neutral-900 pb-12 group">
 <div class="max-w-md">
-<h3 class="font-headline text-3xl font-light tracking-tight mb-2 text-white"><a href="https://nullfellows.com" target="_blank" rel="noreferrer">Null Fellows</a></h3>
-<p class="role-title font-mono text-[0.6rem] text-neutral-500 uppercase tracking-widest">{ }</p>
+<h3 class="font-headline text-3xl font-light tracking-tight mb-2 text-white"><a href="https://cbl.aalto.fi" target="_blank" rel="noreferrer">Aalto Computational Behavior Lab</a></h3>
+<p class="role-title font-mono text-[0.6rem] text-neutral-500 uppercase tracking-widest">Research Assistant</p>
 </div>
-<span class="font-mono text-[0.6rem] text-neutral-400 tabular-nums">Present</span>
+<span class="font-mono text-[0.6rem] text-neutral-400 tabular-nums">2025–2026</span>
 </div>
 <div class="flex justify-between items-end border-b border-neutral-900 pb-12 group">
 <div class="max-w-md">
@@ -475,6 +484,13 @@
 </div>
 </div>
 </div>
+<!-- Content: Open Source -->
+<div class="overlay-content hidden w-full max-w-3xl mx-auto" id="content-opensource">
+<h2 class="font-mono text-[0.9rem] text-neutral-600 uppercase tracking-[0.4em] mb-6 text-center">Open Source</h2>
+<p class="font-mono text-[0.825rem] text-neutral-500 text-center max-w-md mx-auto mb-10 leading-relaxed">Open source software contributions from me.</p>
+<div id="oss-mount-desktop"></div>
+<p id="oss-status-desktop" class="font-mono text-[0.75rem] text-neutral-600 text-center mt-8 uppercase tracking-widest min-h-[1em]"></p>
+</div>
 </div>
 <script>
         // --- Custom Cursor Logic ---
@@ -489,7 +505,8 @@
         const contents = {
             experience: document.getElementById('content-experience'),
             education: document.getElementById('content-education'),
-            projects: document.getElementById('content-projects')
+            projects: document.getElementById('content-projects'),
+            opensource: document.getElementById('content-opensource')
         };
 
         function openOverlay(key) {
@@ -554,6 +571,132 @@
         }
 
         setRandomSelectedProjects();
+
+        // --- Open source (GitHub: external PRs & issues, newest first) ---
+        (function openSourceSection() {
+            const GITHUB_USER = 'Ijtihed';
+            /** Only list contributions from this calendar year onward (drop anything before). */
+            const OSS_MIN_YEAR = 2026;
+            const PR_QUERY = 'author:' + GITHUB_USER + ' is:pr -user:' + GITHUB_USER + ' created:>=' + OSS_MIN_YEAR + '-01-01';
+            const ISSUE_QUERY = 'author:' + GITHUB_USER + ' is:issue -user:' + GITHUB_USER + ' created:>=' + OSS_MIN_YEAR + '-01-01';
+            const ownerDeny = new Set([]);
+
+            const elDesk = document.getElementById('oss-mount-desktop');
+            const elMob = document.getElementById('oss-mount-mobile');
+            const stDesk = document.getElementById('oss-status-desktop');
+            const stMob = document.getElementById('oss-status-mobile');
+
+            function setStatus(msg) {
+                if (stDesk) stDesk.textContent = msg;
+                if (stMob) stMob.textContent = msg;
+            }
+
+            function parseRepo(repository_url) {
+                const m = repository_url && repository_url.match(/\/repos\/([^/]+)\/([^/]+)$/);
+                if (!m) return null;
+                return { owner: m[1], name: m[2], fullName: m[1] + '/' + m[2] };
+            }
+
+            function normalizeItem(apiItem) {
+                const repo = parseRepo(apiItem.repository_url);
+                if (!repo) return null;
+                if (repo.owner.toLowerCase() === 'ijtihed') return null;
+                if (ownerDeny.has(repo.owner.toLowerCase())) return null;
+                const createdYear = new Date(apiItem.created_at).getFullYear();
+                if (createdYear < OSS_MIN_YEAR) return null;
+                return {
+                    title: apiItem.title,
+                    html_url: apiItem.html_url,
+                    updated_at: apiItem.updated_at,
+                    repoFullName: repo.fullName
+                };
+            }
+
+            async function fetchSearchAll(query) {
+                const out = [];
+                for (let page = 1; page <= 10; page++) {
+                    const url = 'https://api.github.com/search/issues?q=' + encodeURIComponent(query) + '&per_page=100&page=' + page + '&sort=updated&order=desc';
+                    const res = await fetch(url);
+                    if (res.status === 403) throw new Error('rate_limit');
+                    if (!res.ok) throw new Error('fetch_failed');
+                    const data = await res.json();
+                    out.push.apply(out, data.items);
+                    if (!data.items.length || data.items.length < 100) break;
+                }
+                return out;
+            }
+
+            function escapeHtml(s) {
+                const d = document.createElement('div');
+                d.textContent = s;
+                return d.innerHTML;
+            }
+
+            /** Mobile panel: never more than this many rows (newest first). */
+            const OSS_MOBILE_SHOW = 2;
+
+            function renderMobileLatest(topItems) {
+                if (!elMob) return;
+                const show = (topItems || []).slice(0, OSS_MOBILE_SHOW);
+                if (!show.length) {
+                    elMob.innerHTML = '<p class="font-mono text-[0.65rem] text-neutral-600">—</p>';
+                    return;
+                }
+                var html = '<p class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest mb-2">Latest · open source</p><ul class="space-y-2 text-left">';
+                show.forEach(function (it) {
+                    html += '<li class="font-mono text-[0.75rem] leading-snug border-b border-neutral-800 pb-2 last:border-0 last:pb-0">';
+                    html += '<a href="' + it.html_url + '" target="_blank" rel="noreferrer" class="text-neutral-300 hover:text-white transition-colors">' +
+                        '<span class="text-neutral-600">' + escapeHtml(it.repoFullName) + ' · </span>' + escapeHtml(it.title) + '</a>';
+                    html += '</li>';
+                });
+                html += '</ul>';
+                elMob.innerHTML = html;
+            }
+
+            function renderList(items) {
+                if (!items.length) {
+                    if (elDesk) elDesk.innerHTML = '<p class="font-mono text-[0.975rem] text-neutral-600 py-4">—</p>';
+                    renderMobileLatest(null);
+                    return;
+                }
+                let html = '<ul class="space-y-3 text-left">';
+                items.forEach(function (it) {
+                    html += '<li class="font-mono text-[0.975rem] leading-snug border-b border-neutral-900 pb-3 last:border-0 last:pb-0">';
+                    html += '<a href="' + it.html_url + '" target="_blank" rel="noreferrer" class="text-neutral-400 hover:text-white transition-colors">' +
+                        '<span class="text-neutral-600">' + escapeHtml(it.repoFullName) + ' · </span>' + escapeHtml(it.title) + '</a>';
+                    html += '</li>';
+                });
+                html += '</ul>';
+                if (elDesk) elDesk.innerHTML = html;
+                renderMobileLatest(items);
+            }
+
+            async function loadOpenSourceData() {
+                setStatus('…');
+                try {
+                    const pair = await Promise.all([fetchSearchAll(PR_QUERY), fetchSearchAll(ISSUE_QUERY)]);
+                    const seen = new Set();
+                    const rawItems = [];
+                    pair[0].concat(pair[1]).forEach(function (apiItem) {
+                        const n = normalizeItem(apiItem);
+                        if (!n || seen.has(n.html_url)) return;
+                        seen.add(n.html_url);
+                        rawItems.push(n);
+                    });
+                    rawItems.sort(function (a, b) {
+                        return new Date(b.updated_at) - new Date(a.updated_at);
+                    });
+                    renderList(rawItems);
+                    setStatus('');
+                } catch (e) {
+                    setStatus(e.message === 'rate_limit' ? 'Rate limited.' : 'Could not load.');
+                    if (elDesk) elDesk.innerHTML = '';
+                    renderMobileLatest(null);
+                }
+            }
+
+            loadOpenSourceData();
+        })();
 
         // --- Ashley Easter Egg ---
         const brandLogo = document.getElementById('brand-logo');
