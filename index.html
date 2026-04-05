@@ -409,13 +409,15 @@
 <span class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest block mb-2 py-2">Selected Projects</span>
 <ul class="space-y-1">
 <li class="group py-2">
-<a id="selected-project-1" class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://github.com/Ijtihed/Skribe" target="_blank" rel="noreferrer">Skribe</a>
+<a class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://supertest-chi.vercel.app" target="_blank" rel="noreferrer">Supertest</a>
 </li>
 <li class="group py-2">
-<a id="selected-project-2" class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://www.siltahouse.com/home" target="_blank" rel="noreferrer">SILTA</a>
+<a class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://nullfellows.com" target="_blank" rel="noreferrer">Null Fellows</a>
+</li>
+<li class="group py-2">
+<a class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="#" onclick="event.preventDefault(); openOverlay('projects');">Home Server</a>
 </li>
 </ul>
-<button class="font-mono text-[0.55rem] text-neutral-700 hover:text-white uppercase tracking-widest mt-3 transition-colors" onclick="setRandomSelectedProjects()">Reload</button>
 </section>
 <!-- Extreme Edge Content: Status/Metadata (Bottom Right Corner) -->
 <section class="absolute bottom-28 right-10 text-right max-w-[14rem] safe-zone-padding pb-0 pr-0 hide-on-short-height mobile-hide">
@@ -844,31 +846,6 @@
             if (filterBtns[0]) setActiveButton(filterBtns[0]);
             applyProjectFilter();
         })();
-
-        // --- Random Selected Projects ---
-        const selectedProjects = [
-            { name: "superTest", url: "https://supertest-chi.vercel.app" },
-            { name: "Null Fellows", url: "https://nullfellows.com" },
-            { name: "Skribe", url: "https://github.com/Ijtihed/Skribe" },
-            { name: "SILTA", url: "https://www.siltahouse.com/home" },
-            { name: "The Yappin' Spirit", url: "https://github.com/Ijtihed/EmotionDetection-Game" },
-            { name: "Maze Maverick", url: "https://store.steampowered.com/app/2629610/Maze_Maverick/" },
-            { name: "Blood Pivot", url: "https://store.steampowered.com/app/2384470/Blood_Pivot/" }
-        ];
-
-        function setRandomSelectedProjects() {
-            const firstEl = document.getElementById('selected-project-1');
-            const secondEl = document.getElementById('selected-project-2');
-            const shuffled = [...selectedProjects].sort(() => Math.random() - 0.5);
-            if (firstEl && secondEl) {
-                firstEl.textContent = shuffled[0].name;
-                secondEl.textContent = shuffled[1].name;
-                firstEl.href = shuffled[0].url;
-                secondEl.href = shuffled[1].url;
-            }
-        }
-
-        setRandomSelectedProjects();
 
         // --- Open source (GitHub: external PRs & issues, newest first) ---
         (function openSourceSection() {
