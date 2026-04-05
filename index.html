@@ -739,7 +739,7 @@
 <!-- Content: Open Source -->
 <div class="overlay-content hidden w-full max-w-3xl mx-auto" id="content-opensource">
 <h2 class="font-mono text-[0.9rem] text-neutral-600 uppercase tracking-[0.4em] mb-6 text-center">Open Source</h2>
-<p class="font-mono text-[0.825rem] text-neutral-500 text-center max-w-md mx-auto mb-10 leading-relaxed">Open source software contributions from me.</p>
+<p class="font-mono text-[0.825rem] text-neutral-500 text-center max-w-md mx-auto mb-10 leading-relaxed">Merged pull requests to other people’s repos.</p>
 <div id="oss-mount-desktop"></div>
 <p id="oss-status-desktop" class="font-mono text-[0.75rem] text-neutral-600 text-center mt-8 uppercase tracking-widest min-h-[1em]"></p>
 </div>
@@ -847,13 +847,12 @@
             applyProjectFilter();
         })();
 
-        // --- Open source (GitHub: external PRs & issues, newest first) ---
+        // --- Open source (GitHub: merged PRs to other repos only, newest first) ---
         (function openSourceSection() {
             const GITHUB_USER = 'Ijtihed';
             /** Only list contributions from this calendar year onward (drop anything before). */
             const OSS_MIN_YEAR = 2026;
-            const PR_QUERY = 'author:' + GITHUB_USER + ' is:pr -user:' + GITHUB_USER + ' created:>=' + OSS_MIN_YEAR + '-01-01';
-            const ISSUE_QUERY = 'author:' + GITHUB_USER + ' is:issue -user:' + GITHUB_USER + ' created:>=' + OSS_MIN_YEAR + '-01-01';
+            const PR_QUERY = 'author:' + GITHUB_USER + ' is:pr is:merged -user:' + GITHUB_USER + ' created:>=' + OSS_MIN_YEAR + '-01-01';
             const ownerDeny = new Set([]);
 
             const elDesk = document.getElementById('oss-mount-desktop');
@@ -917,7 +916,7 @@
                     elMob.innerHTML = '<p class="font-mono text-[0.65rem] text-neutral-600">—</p>';
                     return;
                 }
-                var html = '<p class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest mb-2">Latest · open source</p><ul class="space-y-2 text-left">';
+                var html = '<p class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest mb-2">Latest · merged PRs</p><ul class="space-y-2 text-left">';
                 show.forEach(function (it) {
                     html += '<li class="font-mono text-[0.75rem] leading-snug border-b border-neutral-800 pb-2 last:border-0 last:pb-0">';
                     html += '<a href="' + it.html_url + '" target="_blank" rel="noreferrer" class="text-neutral-300 hover:text-white transition-colors">' +
@@ -949,10 +948,10 @@
             async function loadOpenSourceData() {
                 setStatus('…');
                 try {
-                    const pair = await Promise.all([fetchSearchAll(PR_QUERY), fetchSearchAll(ISSUE_QUERY)]);
+                    const prItems = await fetchSearchAll(PR_QUERY);
                     const seen = new Set();
                     const rawItems = [];
-                    pair[0].concat(pair[1]).forEach(function (apiItem) {
+                    prItems.forEach(function (apiItem) {
                         const n = normalizeItem(apiItem);
                         if (!n || seen.has(n.html_url)) return;
                         seen.add(n.html_url);
