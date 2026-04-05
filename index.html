@@ -93,30 +93,59 @@
       .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 20;
       }
+      /* Full-viewport scroll: wheel works over side margins, not only the centered column */
+      #overlay-container {
+        -webkit-overflow-scrolling: touch;
+      }
+      #overlay-container::-webkit-scrollbar {
+        width: 2px;
+      }
+      #overlay-container::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      #overlay-container::-webkit-scrollbar-thumb {
+        background: #333;
+      }
+      #overlay-container::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
       .overlay-content {
         transform: translateY(20px);
         opacity: 0;
         transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        max-height: 80vh;
-        overflow-y: auto;
+        width: 100%;
         padding-right: 1rem;
-      }
-      /* Minimalist scrollbar */
-      .overlay-content::-webkit-scrollbar {
-        width: 2px;
-      }
-      .overlay-content::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      .overlay-content::-webkit-scrollbar-thumb {
-        background: #333;
-      }
-      .overlay-content::-webkit-scrollbar-thumb:hover {
-        background: #555;
       }
       .overlay-active .overlay-content {
         transform: translateY(0);
         opacity: 1;
+      }
+      /* Education overlay: vertical timeline */
+      .education-timeline {
+        position: relative;
+        margin-left: 0.5rem;
+        padding-left: 1.5rem;
+        border-left: 1px solid rgba(64, 64, 64, 0.85);
+      }
+      .education-timeline-entry {
+        position: relative;
+        padding-bottom: 3rem;
+      }
+      .education-timeline-entry:last-child {
+        padding-bottom: 0;
+      }
+      .education-timeline-entry::before {
+        content: "";
+        position: absolute;
+        left: -1.5rem;
+        top: 0.35rem;
+        width: 9px;
+        height: 9px;
+        margin-left: -4px;
+        border-radius: 9999px;
+        background: #000;
+        border: 1px solid #737373;
+        box-shadow: 0 0 0 2px #000;
       }
       #content-experience .role-title {
         font-size: 0.68rem;
@@ -134,6 +163,36 @@
       }
       .safe-zone-padding {
         padding: 2.5rem; /* ~40px */
+      }
+      .project-card-detail {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: 1px solid transparent;
+        transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin-top 0.35s ease, padding-top 0.35s ease, border-color 0.25s ease;
+      }
+      .project-card-detail-inner {
+        max-height: min(70vh, 28rem);
+        overflow-y: auto;
+        padding-right: 0.25rem;
+      }
+      .project-card-detail-inner::-webkit-scrollbar {
+        width: 2px;
+      }
+      .project-card-detail-inner::-webkit-scrollbar-thumb {
+        background: #404040;
+      }
+      @media (min-width: 1024px) {
+        .project-card:hover .project-card-detail,
+        a.project-card:hover .project-card-detail {
+          max-height: min(72vh, 30rem);
+          opacity: 1;
+          margin-top: 1.1rem;
+          padding-top: 1rem;
+          border-top-color: rgba(64, 64, 64, 0.75);
+        }
       }
       /* Custom cursor: hide native pointer (Tailwind cursor-pointer would otherwise win) */
       body,
@@ -240,6 +299,23 @@
           color: #a3a3a3;
           margin-bottom: 0.2rem;
         }
+        .mobile-mini-more-dots {
+          font-family: "JetBrains Mono";
+          font-size: 0.5rem;
+          letter-spacing: 0.35em;
+          color: #404040;
+          margin-top: 0.45rem;
+          margin-bottom: 0.15rem;
+          line-height: 1;
+        }
+        .mobile-mini-more {
+          font-family: "JetBrains Mono";
+          font-size: 0.5rem;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          color: #525252;
+          margin: 0;
+        }
         .mobile-cv-link {
           text-align: center;
           letter-spacing: 0.4em;
@@ -278,11 +354,12 @@
 </section>
 <section class="mobile-mini-section mobile-mini-right">
 <p class="mobile-mini-title">projects</p>
-<p id="mobile-project-1" class="mobile-mini-item">Agentic Scribe</p>
-<p id="mobile-project-2" class="mobile-mini-item">SILTA</p>
-<p id="mobile-project-3" class="mobile-mini-item">Null Fellows</p>
-<p id="mobile-project-4" class="mobile-mini-item">Maze Maverick</p>
-<p id="mobile-project-5" class="mobile-mini-item">Blood Pivot</p>
+<p class="mobile-mini-item">superTest</p>
+<p class="mobile-mini-item">Null Fellows</p>
+<p class="mobile-mini-item">coreLLM</p>
+<p class="mobile-mini-item">skribe</p>
+<p class="mobile-mini-more-dots" aria-hidden="true">· · · ·</p>
+<p class="mobile-mini-more"><span class="sr-only">Additional projects exist beyond this list.</span>+ more</p>
 </section>
 <section id="mobile-opensource" class="mobile-only mobile-opensource" aria-label="Latest open source contributions">
 <div id="oss-mount-mobile" class="text-center"></div>
@@ -332,7 +409,7 @@
 <span class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-widest block mb-2 py-2">Selected Projects</span>
 <ul class="space-y-1">
 <li class="group py-2">
-<a id="selected-project-1" class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://github.com/Ijtihed/Skribe" target="_blank" rel="noreferrer">Agentic Scribe</a>
+<a id="selected-project-1" class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://github.com/Ijtihed/Skribe" target="_blank" rel="noreferrer">Skribe</a>
 </li>
 <li class="group py-2">
 <a id="selected-project-2" class="font-mono text-[0.7rem] text-neutral-400 uppercase tracking-widest group-hover:text-white transition-colors" href="https://www.siltahouse.com/home" target="_blank" rel="noreferrer">SILTA</a>
@@ -356,10 +433,11 @@
 </div>
 </footer>
 <!-- Fullscreen Overlays -->
-<div class="fixed inset-0 z-[100] bg-black hidden flex-col items-center justify-center p-10" id="overlay-container">
-<button class="absolute top-10 right-10 text-neutral-500 hover:text-white transition-colors font-mono text-[0.7rem] uppercase tracking-widest flex items-center gap-2 p-4" onclick="closeOverlay()">
+<div class="fixed inset-0 z-[100] bg-black hidden overflow-y-auto overflow-x-hidden" id="overlay-container">
+<button class="fixed top-10 right-10 z-[110] text-neutral-500 hover:text-white transition-colors font-mono text-[0.7rem] uppercase tracking-widest flex items-center gap-2 p-4" onclick="closeOverlay()">
             Close <span class="material-symbols-outlined text-[1rem]">close</span>
 </button>
+<div class="overlay-scroll-inner flex min-h-full w-full flex-col items-center justify-center px-10 py-24 pb-16">
 <!-- Content: Experience -->
 <div class="overlay-content hidden w-full max-w-3xl mx-auto" id="content-experience">
 <h2 class="font-mono text-[0.6rem] text-neutral-600 uppercase tracking-[0.4em] mb-20 text-center">History // Experience</h2>
@@ -417,72 +495,242 @@
 </div>
 <!-- Content: Education -->
 <div class="overlay-content hidden w-full max-w-3xl mx-auto" id="content-education">
-<h2 class="font-mono text-[0.6rem] text-neutral-600 uppercase tracking-[0.4em] mb-20 text-center">Formative // Education</h2>
-<div class="space-y-16">
-<div class="flex justify-between items-end border-b border-neutral-900 pb-12">
-<div class="max-w-md">
-<h3 class="font-headline text-3xl font-light tracking-tight mb-2 text-white">Aalto University</h3>
-<p class="font-mono text-[0.9rem] text-neutral-500 uppercase tracking-widest">MSc, Mathematics</p>
+<h2 class="font-mono text-[0.6rem] text-neutral-600 uppercase tracking-[0.4em] mb-14 text-center">Formative // Education</h2>
+<div class="education-timeline max-w-xl mx-auto text-left">
+<div class="education-timeline-entry">
+<p class="font-mono text-[0.55rem] text-neutral-500 uppercase tracking-[0.2em] mb-2 tabular-nums">Current</p>
+<h3 class="font-headline text-2xl sm:text-3xl font-light tracking-tight mb-2 text-white">Aalto University</h3>
+<p class="font-mono text-[0.85rem] sm:text-[0.9rem] text-neutral-500 uppercase tracking-widest leading-relaxed">MSc, Mathematics</p>
 </div>
-<span class="font-mono text-[0.6rem] text-neutral-400 tabular-nums">Current</span>
-</div>
-<div class="flex justify-between items-end border-b border-neutral-900 pb-12">
-<div class="max-w-md">
-<h3 class="font-headline text-3xl font-light tracking-tight mb-2 text-white">Aalto University</h3>
-<p class="font-mono text-[0.9rem] text-neutral-500 uppercase tracking-widest">BSc, Computational Engineering</p>
-</div>
-<span class="font-mono text-[0.6rem] text-neutral-400 tabular-nums">Ending 2026</span>
+<div class="education-timeline-entry">
+<p class="font-mono text-[0.55rem] text-neutral-500 uppercase tracking-[0.2em] mb-2 tabular-nums">Ending 2026</p>
+<h3 class="font-headline text-2xl sm:text-3xl font-light tracking-tight mb-2 text-white">Aalto University</h3>
+<p class="font-mono text-[0.85rem] sm:text-[0.9rem] text-neutral-500 uppercase tracking-widest leading-relaxed">BSc, Computational Engineering</p>
 </div>
 </div>
 </div>
-<!-- Content: Projects -->
+<!-- Content: Projects (featured + filters wired in initProjectsPanel) -->
 <div class="overlay-content hidden w-full max-w-5xl mx-auto" id="content-projects">
-<h2 class="font-mono text-[0.6rem] text-neutral-600 uppercase tracking-[0.4em] mb-20 text-center">Output // Projects</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" onclick="window.open('https://supertest-chi.vercel.app','_blank')">
-<span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">01 / PLATFORM</span>
-<h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">Supertest</h3>
+<h2 class="font-mono text-[0.6rem] text-neutral-600 uppercase tracking-[0.4em] mb-8 text-center">Output // Projects</h2>
+<div id="projects-filters" class="flex flex-wrap gap-2 justify-center mb-10 font-mono text-[0.55rem] uppercase tracking-[0.2em]"></div>
+<div class="mb-14">
+<p class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-[0.35em] mb-4 text-center">Featured</p>
+<div id="projects-featured" class="grid grid-cols-1 md:grid-cols-2 gap-8 min-h-[1px]"></div>
+</div>
+<p class="font-mono text-[0.55rem] text-neutral-600 uppercase tracking-[0.35em] mb-4 text-center">All projects</p>
+<div id="projects-rest" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="project-card group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" data-slug="supertest" data-status="deployed" onclick="window.open('https://supertest-chi.vercel.app','_blank')">
+<div class="flex items-start justify-between gap-3 mb-6">
+<span class="font-mono text-[0.75rem] text-neutral-700 tracking-widest">01 / PLATFORM</span>
+<span class="hidden lg:inline font-mono text-[0.5rem] uppercase tracking-[0.28em] text-emerald-400/90 shrink-0 pt-0.5">Deployed</span>
+</div>
+<h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">superTest</h3>
 <p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Internal game testing tool for Supercell.</p>
+<div class="project-card-detail">
+<div class="project-card-detail-inner space-y-4 text-left">
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Stack</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">TypeScript · Next.js · Supabase · Vercel (deploy)</p>
 </div>
-<div class="group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" onclick="window.open('https://nullfellows.com','_blank')">
-<span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">02 / STARTUP</span>
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Description</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Internal cohort playtesting tool for Supercell: built to replace ad-hoc sharing; now the AI Lab’s pipeline for co-testing.</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] tracking-[0.2em] text-neutral-600 mb-1.5">why I built it</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">a quick batch meeting showed me that everyone wanted everyone to playtest their games but nobody wanted to just drop a random link in slack; built this to support everyone in the batch and make it easy to get feedback and iterate quickly on it.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="project-card group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" data-slug="null-fellows" data-status="deployed" onclick="window.open('https://nullfellows.com','_blank')">
+<div class="flex items-start justify-between gap-3 mb-6">
+<span class="font-mono text-[0.75rem] text-neutral-700 tracking-widest">02 / STARTUP</span>
+<span class="hidden lg:inline font-mono text-[0.5rem] uppercase tracking-[0.28em] text-emerald-400/90 shrink-0 pt-0.5">Deployed</span>
+</div>
 <h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">Null Fellows</h3>
-<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">{ }</p>
+<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Co-founder · builder fellowship.</p>
+<div class="project-card-detail">
+<div class="project-card-detail-inner space-y-4 text-left">
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Stack</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">TypeScript · Next.js · Tailwind · Vercel (public site)</p>
 </div>
-<div class="group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer">
-<span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">03 / INFRA</span>
-<h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">Home Server</h3>
-<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Private lab for hosting tools and services.</p>
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Description</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Co-founder of a builder fellowship: led cohort operations placing talent into hyper-scaling European startups. The site is the public face; programs and placements sit behind it.</p>
 </div>
-<div class="group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" onclick="window.open('https://github.com/Ijtihed/Skribe','_blank')">
-<span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">04 / PLATFORM</span>
-<h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">Agentic Scribe</h3>
-<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Built under 48 hours.</p>
+<div>
+<p class="font-mono text-[0.5rem] tracking-[0.2em] text-neutral-600 mb-1.5">why I built it</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">a clear home for the fellowship’s story and applications—minimal surface, maximum signal for founders and operators.</p>
 </div>
-<div class="group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" onclick="window.open('https://www.siltahouse.com/home','_blank')">
-<span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">05 / PLATFORM</span>
+</div>
+</div>
+</div>
+<div class="project-card group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" data-slug="home-server" data-status="deployed">
+<div class="flex items-start justify-between gap-3 mb-6">
+<span class="font-mono text-[0.75rem] text-neutral-700 tracking-widest">03 / INFRA</span>
+<span class="hidden lg:inline font-mono text-[0.5rem] uppercase tracking-[0.28em] text-emerald-400/90 shrink-0 pt-0.5">Deployed</span>
+</div>
+<h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">coreLLM</h3>
+<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Self-hosted GPU LLM · Tailscale + SSH.</p>
+<div class="project-card-detail">
+<div class="project-card-detail-inner space-y-4 text-left">
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Stack</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Debian · KVM · Tailscale · SSH · CUDA · Ollama (systemd GPU LLM stack)</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Description</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Self-hosted home server: running a systemd-managed GPU LLM stack with Tailscale + SSH for VPN-secured, 24/7 remote access.</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] tracking-[0.2em] text-neutral-600 mb-1.5">why I built it</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">own the hardware and network path for experiments—local inference, storage, and tooling without shipping data to a third party by default.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="project-card group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" data-slug="agentic-scribe" data-status="shipped" onclick="window.open('https://github.com/Ijtihed/Skribe','_blank')">
+<div class="flex items-start justify-between gap-3 mb-6">
+<span class="font-mono text-[0.75rem] text-neutral-700 tracking-widest">04 / PLATFORM</span>
+<span class="hidden lg:inline font-mono text-[0.5rem] uppercase tracking-[0.28em] text-amber-400/90 shrink-0 pt-0.5">Shipped</span>
+</div>
+<h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">skribe</h3>
+<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">HackMIT ’25 · FastAPI + WebSockets clinical pipeline.</p>
+<div class="project-card-detail">
+<div class="project-card-detail-inner space-y-4 text-left">
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Stack</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Python · FastAPI · SQLite · OpenAI API · WebSockets (streaming)</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Description</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Skribe: streaming FastAPI + WebSockets backend with a three-agent pipeline; built at HackMIT ’25 with sub–2s end-to-end latency and ~95% accuracy on the demo path.</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] tracking-[0.2em] text-neutral-600 mb-1.5">why I built it</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">after cold-calling clinics and clinical staff, we kept hearing the same gap: documentation doesn’t keep pace with the visit. that’s addressable with automatic scribes that run locally and preserve trust—so sensitive work stays in-house.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="project-card group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" data-slug="silta" data-status="deployed" onclick="window.open('https://www.siltahouse.com/home','_blank')">
+<div class="flex items-start justify-between gap-3 mb-6">
+<span class="font-mono text-[0.75rem] text-neutral-700 tracking-widest">05 / PLATFORM</span>
+<span class="hidden lg:inline font-mono text-[0.5rem] uppercase tracking-[0.28em] text-emerald-400/90 shrink-0 pt-0.5">Deployed</span>
+</div>
 <h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">SILTA</h3>
 <p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Built and maintained.</p>
+<div class="project-card-detail">
+<div class="project-card-detail-inner space-y-4 text-left">
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Stack</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">TypeScript · modern web stack · CMS / content as deployed · production hosting</p>
 </div>
-<a class="group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer block text-inherit no-underline" href="bracketproject.pdf" target="_blank" rel="noreferrer">
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Description</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Public site and integrations for SILTA house: marketing pages, forms, and ongoing maintenance as the org grew.</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] tracking-[0.2em] text-neutral-600 mb-1.5">why I built it</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">they needed a reliable web presence and someone to own deploys and updates. why not.</p>
+</div>
+</div>
+</div>
+</div>
+<a class="project-card group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer block text-inherit no-underline" data-slug="race-car-bracket" data-status="none" href="bracketproject.pdf" target="_blank" rel="noreferrer">
 <span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">06 / ENGINEERING</span>
 <h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">Race-Car Bracket</h3>
-<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Topology optimization for lightweight performance.</p>
+<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">race-car lightweight suspension bracket.</p>
+<div class="project-card-detail">
+<div class="project-card-detail-inner space-y-4 text-left">
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Stack</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Python · Ansys (topology optimization / FEM) · CAD workflow</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Description</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Structural study: optimize a physical race-car suspension bracket for stiffness and weight under defined loads and manufacturing constraints. Course / research deliverable connecting simulation, optimization, and readable engineering documentation (full write-up in the linked PDF).</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] tracking-[0.2em] text-neutral-600 mb-1.5">why I built it</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">needed to work on a computational engineering project. all the suggested ones were boring so I paired up with an aerodynamics engineer at a local race-car team to build this. learned lots of stuff about computational engineering (way more than my entire degree p much).</p>
+</div>
+</div>
+</div>
 </a>
-<div class="group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" onclick="window.open('https://github.com/Ijtihed/EmotionDetection-Game','_blank')">
-<span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">07 / GAME</span>
+<div class="project-card group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" data-slug="yappin-spirit" data-status="shipped" onclick="window.open('https://github.com/Ijtihed/EmotionDetection-Game','_blank')">
+<div class="flex items-start justify-between gap-3 mb-6">
+<span class="font-mono text-[0.75rem] text-neutral-700 tracking-widest">07 / GAME</span>
+<span class="hidden lg:inline font-mono text-[0.5rem] uppercase tracking-[0.28em] text-amber-400/90 shrink-0 pt-0.5">Shipped</span>
+</div>
 <h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">The Yappin' Spirit</h3>
-<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Emotion detection game.</p>
+<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">OpenCV + Unity · shipped to Itch.io.</p>
+<div class="project-card-detail">
+<div class="project-card-detail-inner space-y-4 text-left">
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Stack</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Python · C# · Flask · OpenCV · Unity · camera / emotion-input pipeline</p>
 </div>
-<div class="group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" onclick="window.open('https://store.steampowered.com/app/2629610/Maze_Maverick/','_blank')">
-<span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">08 / GAME</span>
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Description</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Emotion-driven mechanics with a Python/OpenCV sidecar feeding Unity; shipped to Itch.io. GitHub link opens the repo for code and history.</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] tracking-[0.2em] text-neutral-600 mb-1.5">why I built it</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">I couldn't understand what my hackathon teammate was saying so I thought "why not turn this very (un)fun experience into a game?" that's how this game was born.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="project-card group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" data-slug="maze-maverick" data-status="shipped" onclick="window.open('https://store.steampowered.com/app/2629610/Maze_Maverick/','_blank')">
+<div class="flex items-start justify-between gap-3 mb-6">
+<span class="font-mono text-[0.75rem] text-neutral-700 tracking-widest">08 / GAME</span>
+<span class="hidden lg:inline font-mono text-[0.5rem] uppercase tracking-[0.28em] text-amber-400/90 shrink-0 pt-0.5">Shipped</span>
+</div>
 <h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">Maze Maverick</h3>
-<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Published on Steam.</p>
+<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">3D maze · shipped on Steam.</p>
+<div class="project-card-detail">
+<div class="project-card-detail-inner space-y-4 text-left">
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Stack</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">C# · Unity (3D) · Blender · Steamworks · build pipeline · store assets</p>
 </div>
-<div class="group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" onclick="window.open('https://store.steampowered.com/app/2384470/Blood_Pivot/','_blank')">
-<span class="font-mono text-[0.75rem] text-neutral-700 mb-6 block tracking-widest">09 / GAME</span>
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Description</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Steam release: top-down action with full store presence—builds, depots, and the public page.</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] tracking-[0.2em] text-neutral-600 mb-1.5">why I built it</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">my game studio built this over a year; commercially it was a flop, but I learned a lot shipping it through Steam.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="project-card group border border-neutral-900 p-10 hover:bg-neutral-950 transition-all duration-500 cursor-pointer" data-slug="blood-pivot" data-status="shipped" onclick="window.open('https://store.steampowered.com/app/2384470/Blood_Pivot/','_blank')">
+<div class="flex items-start justify-between gap-3 mb-6">
+<span class="font-mono text-[0.75rem] text-neutral-700 tracking-widest">09 / GAME</span>
+<span class="hidden lg:inline font-mono text-[0.5rem] uppercase tracking-[0.28em] text-amber-400/90 shrink-0 pt-0.5">Shipped</span>
+</div>
 <h3 class="font-headline text-2xl mb-6 text-neutral-300 group-hover:text-white transition-colors">Blood Pivot</h3>
-<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">Published on Steam.</p>
+<p class="text-neutral-500 text-[0.7rem] leading-relaxed font-mono uppercase tracking-wider">2D action · shipped on Steam.</p>
+<div class="project-card-detail">
+<div class="project-card-detail-inner space-y-4 text-left">
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Stack</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">C# · Unity (2D) · Steamworks · top-down action · VFX / audio as shipped</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-neutral-600 mb-1.5">Description</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">Commercial 3D maze game on Steam: core navigation loop, Steam depots, and public store page.</p>
+</div>
+<div>
+<p class="font-mono text-[0.5rem] tracking-[0.2em] text-neutral-600 mb-1.5">why I built it</p>
+<p class="font-mono text-[0.6rem] text-neutral-400 leading-relaxed">my game studio built this over a year; made about 100$, but I learned a lot shipping it through Steam.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -492,6 +740,7 @@
 <p class="font-mono text-[0.825rem] text-neutral-500 text-center max-w-md mx-auto mb-10 leading-relaxed">Open source software contributions from me.</p>
 <div id="oss-mount-desktop"></div>
 <p id="oss-status-desktop" class="font-mono text-[0.75rem] text-neutral-600 text-center mt-8 uppercase tracking-widest min-h-[1em]"></p>
+</div>
 </div>
 </div>
 <script>
@@ -513,14 +762,14 @@
 
         function openOverlay(key) {
             overlayContainer.classList.remove('hidden');
-            overlayContainer.classList.add('flex');
+            overlayContainer.classList.add('block');
             
             // Hide all content first
             Object.values(contents).forEach(el => el.classList.add('hidden'));
             
             // Show requested content
             contents[key].classList.remove('hidden');
-            contents[key].scrollTop = 0; // Reset scroll position
+            overlayContainer.scrollTop = 0;
             
             // Animate in
             setTimeout(() => {
@@ -531,16 +780,76 @@
         function closeOverlay() {
             overlayContainer.classList.remove('overlay-active');
             setTimeout(() => {
-                overlayContainer.classList.remove('flex');
+                overlayContainer.classList.remove('block');
                 overlayContainer.classList.add('hidden');
             }, 600);
         }
 
+        // --- Projects: featured row (max 4) + filters — FEATURED_SLUGS order = Supertest, Null Fellows, Home Server, Skribe (agentic-scribe)
+        (function initProjectsPanel() {
+            const FEATURED_SLUGS = ['supertest', 'null-fellows', 'home-server', 'agentic-scribe'];
+            const rest = document.getElementById('projects-rest');
+            const featured = document.getElementById('projects-featured');
+            const filterRoot = document.getElementById('projects-filters');
+            if (!rest || !featured || !filterRoot) return;
+
+            FEATURED_SLUGS.slice(0, 4).forEach(function (slug) {
+                const el = rest.querySelector('.project-card[data-slug="' + slug + '"]');
+                if (el) featured.appendChild(el);
+            });
+
+            const filterBtns = [];
+            let currentFilter = 'all';
+            const filterSpec = [
+                { key: 'all', label: 'All' },
+                { key: 'deployed', label: 'Deployed' },
+                { key: 'shipped', label: 'Shipped' },
+                { key: 'none', label: 'Other' }
+            ];
+
+            function setActiveButton(activeBtn) {
+                filterBtns.forEach(function (b) {
+                    b.classList.remove('text-white', 'border-neutral-500');
+                    b.classList.add('text-neutral-500', 'border-neutral-800');
+                });
+                activeBtn.classList.add('text-white', 'border-neutral-500');
+                activeBtn.classList.remove('text-neutral-500', 'border-neutral-800');
+            }
+
+            function applyProjectFilter() {
+                document.querySelectorAll('#projects-rest .project-card, #projects-featured .project-card').forEach(function (card) {
+                    const st = card.getAttribute('data-status') || 'none';
+                    let show = currentFilter === 'all' ||
+                        (currentFilter === 'deployed' && st === 'deployed') ||
+                        (currentFilter === 'shipped' && st === 'shipped') ||
+                        (currentFilter === 'none' && st === 'none');
+                    card.classList.toggle('hidden', !show);
+                });
+            }
+
+            filterSpec.forEach(function (f) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.textContent = f.label;
+                btn.setAttribute('data-project-filter', f.key);
+                btn.className = 'project-filter-btn px-4 py-2 border text-neutral-500 border-neutral-800 hover:text-white hover:border-neutral-600 transition-colors font-mono text-[0.55rem] uppercase tracking-[0.2em]';
+                btn.addEventListener('click', function () {
+                    currentFilter = f.key;
+                    setActiveButton(btn);
+                    applyProjectFilter();
+                });
+                filterRoot.appendChild(btn);
+                filterBtns.push(btn);
+            });
+            if (filterBtns[0]) setActiveButton(filterBtns[0]);
+            applyProjectFilter();
+        })();
+
         // --- Random Selected Projects ---
         const selectedProjects = [
-            { name: "Supertest", url: "https://supertest-chi.vercel.app" },
+            { name: "superTest", url: "https://supertest-chi.vercel.app" },
             { name: "Null Fellows", url: "https://nullfellows.com" },
-            { name: "Agentic Scribe", url: "https://github.com/Ijtihed/Skribe" },
+            { name: "Skribe", url: "https://github.com/Ijtihed/Skribe" },
             { name: "SILTA", url: "https://www.siltahouse.com/home" },
             { name: "The Yappin' Spirit", url: "https://github.com/Ijtihed/EmotionDetection-Game" },
             { name: "Maze Maverick", url: "https://store.steampowered.com/app/2629610/Maze_Maverick/" },
@@ -557,19 +866,6 @@
                 firstEl.href = shuffled[0].url;
                 secondEl.href = shuffled[1].url;
             }
-
-            const mobileProjectEls = [
-                document.getElementById('mobile-project-1'),
-                document.getElementById('mobile-project-2'),
-                document.getElementById('mobile-project-3'),
-                document.getElementById('mobile-project-4'),
-                document.getElementById('mobile-project-5')
-            ];
-            mobileProjectEls.forEach((el, idx) => {
-                if (!el) return;
-                const item = shuffled[idx + 2] || shuffled[idx % shuffled.length];
-                el.textContent = item.name;
-            });
         }
 
         setRandomSelectedProjects();
